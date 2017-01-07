@@ -47,7 +47,7 @@ class AnggotaModel extends Model
 	}
 
 	public static function getDelete($id){
-		DB::table('anggota')->delete($id);
+		DB::table('anggota')->where('id_anggota',$id)->delete();
 	}
 
 }

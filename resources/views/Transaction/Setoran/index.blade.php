@@ -19,10 +19,10 @@
               {{-- <div class="col-md-12"> --}}
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Anggota<small>keanggotaan koperasi</small></h2>
+                    <h2>Setoran<small>dana masuk koperasi</small></h2>
                     <div class="pull-right">
                       {{-- <a href="{{ URL::to('tambahModule') }}" class="tips btn btn-xs btn-info" title="Tambah Siswa"><i class="fa fa-plus"></i> Tambah</a> --}}
-                      <a href="{{ route('create.anggota') }}" class="tips btn btn-xs btn-info" title="Tambah Siswa"><i class="fa fa-plus"></i> Tambah</a>
+                      <a href="{{ route('create.setoran') }}" class="tips btn btn-xs btn-info" title="Tambah Siswa"><i class="fa fa-plus"></i> Tambah</a>
 
 
                     </div>
@@ -40,8 +40,7 @@
                             <th width="20px">No</th>
                             <th width="120px">No Anggota</th>
                             <th width="">Nama Anggota</th>
-                            <th>No Telpon</th>
-                            <th>Alamat</th>
+                            <th>Keterangan</th>
                             <th width="100px"></th>
                           </thead>
                           <tbody>
@@ -50,11 +49,10 @@
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $row->no_anggota }}</td>
                                 <td>{{ $row->nama_anggota }}</td>
-                                <td>{{ $row->no_telpon }}</td>
-                                <td>{{ $row->alamat }}</td>
+                                <td>{{ $row->keterangan }}</td>
                                 <td>
-                                    <a href="{{ route('update.anggota',Encrypter::encryptID($row->id_anggota) ) }}" class="tips btn btn-xs btn-info" title="Edit"><i class="fa fa-folder-open-o"></i></a>
-                                    <button value="{{ $row->id_anggota }}" class="tips btn btn-xs btn-danger hapus-siswa" title="Hapus" onclick="validation(this.value)"><i class="fa fa-trash"></i></button>
+                                    <a href="{{ route('update.setoran',Encrypter::encryptID($row->id_setoran) ) }}" class="tips btn btn-xs btn-info" title="Edit"><i class="fa fa-folder-open-o"></i></a>
+                                    <button value="{{ $row->id_setoran }}" class="tips btn btn-xs btn-danger hapus-siswa" title="Hapus" onclick="validation(this.value)"><i class="fa fa-trash"></i></button>
                                   </td>
                               @endforeach
                             </tr>
@@ -123,7 +121,7 @@ function validation(val){
       if (isConfirm) {     
         setTimeout(function(){
             $.ajax({
-              url: "{{ URL::to('deleteAnggota/?id=') }}"+val,
+              url: "{{ URL::to('deleteSetoran/?id=') }}"+val,
               method: 'GET',
             });
         swal("Dihapus!", "Data berhasil dihapus.", "success");   

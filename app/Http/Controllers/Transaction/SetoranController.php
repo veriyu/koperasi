@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Koperasi;
+namespace App\Http\Controllers\Transaction;
 
 // call a model
-use App\Models\Koperasi\KoperasiModel;
+use App\Models\Transaction\SetoranModel;
 
 // Extend Controller
 use App\Http\Controllers\Controller;
@@ -13,10 +13,11 @@ use Illuminate\Http\Request;
 
 use Illuminate\Pagination\LengthAwarePaginator;
 
+// Use Encrypter
+use App\Helpers\Encrypter;
+use Session;
 
-
-
-class KoperasiController extends Controller
+class SetoranController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -39,12 +40,12 @@ class KoperasiController extends Controller
     public function index()
     {
 
-        $this->data['title']    = '';
-        $this->data['module']   = '';
+        $this->data['title']    = 'Setoran';
+        $this->data['module']   = 'Koperasi';
         
         $param = static::$perpage;
 
-        $this->data['rows']     = KoperasiModel::getRows($param);
+        $this->data['rows']     = SetoranModel::getRows($param);
 
         // numbering
         $currentPage     = LengthAwarePaginator::resolveCurrentPage();
@@ -56,41 +57,47 @@ class KoperasiController extends Controller
         }
         // /numbering
 
-        return view('Koperasi.index',$this->data);
+        return view('Transaction.Setoran.index',$this->data);
     }
 
     public function create(Request $request){
 
-        return view('Koperasi.form');
+        $this->data['DataAnggota'] = SetoranModel::getAnggota();
+
+        return view('Transaction.Setoran.form',$this->data);
     }
 
-    public function showdata(Request $request){
+    public function showdata($id){
 
+        $id = Encrypter::encryptID($id,true);
 
-        return view('Koperasi.form_update');
+        $this->data['DataAnggota'] = SetoranModel::getAnggota();
+        $this->data['DataSetoran'] = SetoranModel::getRow($id);
+
+        return view('Transaction.Setoran.form_update',$this->data);
     }
 
     public function save(Request $request){
 
         $data = $request->all();
-
-        if($id == 'NULL'){
+        
+        if($data['IdSetoran'] == 'NULL'){
             
-            KoperasiModel::getInsert($data);
+            SetoranModel::getInsert($data);
         }else{
             
-            KoperasiModel::getUpdate($data);
+            SetoranModel::getUpdate($data);
         }
 
-        return redirect('koperasi');
+        return redirect('setoran');
 
     }
 
     public function delete(Request $request){
-        
-        KoperasiModel::getDelete($request->input('KegiatanId'));
 
-        return redirect('koperasi');
+        SetoranModel::getDelete($request->input('id'));
+
+        return redirect('setoran');
     }
 
 }

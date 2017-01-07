@@ -92,8 +92,8 @@ class AnggotaController extends Controller
     }
 
     public function delete(Request $request){
-        
-        AnggotaModel::getDelete($request->input('id_anggota'));
+
+        AnggotaModel::getDelete($request->input('id'));
 
         return redirect('anggota');
     }

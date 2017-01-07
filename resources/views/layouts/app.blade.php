@@ -120,22 +120,16 @@
                                 {{-- /MODULE GENERATOR --}}
                                 
                                 {{-- MoDULE ANGGOTA --}}
-                                <li><a href="{{ URL::to('anggota') }}"><i class="fa fa-clone"></i>Anggota <span class="fa fa-chevron-down"></span></a>
-                                   {{--  <ul class="nav child_menu">
-                                        <li><a href="{{ URL::to('kegiatan') }}">Kegiatan</a></li>
-                                        <li><a href="{{ URL::to('pasien') }}">Pasien</a></li>
-                                        <li><a href="{{ URL::to('obat') }}">Data Obat</a></li>
-                                        <li><a> <span class="fa fa-chevron-down"></span>Laporan</a>
-                                            <ul class="nav child_menu">
-                                                <li class="sub_menu">
-                                                    <a href="{{ URL::to('laporan_poliklinik_kegiatan') }}">Laporan Kegiatan</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul> --}}
+                                <li>
+                                    <a href="{{ URL::to('anggota') }}"><i class="fa fa-clone"></i>Anggota <span class="fa fa-chevron-down"></span></a>
                                 </li>
                                 {{-- /MoDULE ANGGOTA --}}
 
+                                {{-- MoDULE SETORAN --}}
+                                <li>
+                                    <a href="{{ URL::to('setoran') }}"><i class="fa fa-clone"></i>Setoran <span class="fa fa-chevron-down"></span></a>
+                                </li>
+                                {{-- /MoDULE SETORAN --}}
 
                                 {{-- MoDULE UPLOAD --}}
 
