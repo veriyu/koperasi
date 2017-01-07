@@ -76,7 +76,7 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="{{ URL::to('home') }}" class="site_title"><i class="fa fa-plus-square"></i> <span>Poliklinik</span></a>
+                        <a href="{{ URL::to('home') }}" class="site_title"><i class="fa fa-plus-square"></i> <span>Talenta Sejahtera</span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -84,7 +84,7 @@
                     <!-- menu profile quick info -->
                     <div class="profile">
                         <div class="profile_pic">
-                            <img src="../user.png" alt="..." class="img-circle profile_img">
+                            <img src="{{ asset('assets/image/user.png') }}" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
                             <span>Selamat Datang</span>
@@ -111,18 +111,17 @@
                                 </li>
                                 @endif
                                 
-                                {{-- MoDULE KOPRASI --}}
+                                {{-- MODULE GENERATOR --}}
                                 <li><a><i class="fa fa-clone"></i>Module <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="{{ URL::to('module') }}">Master Module</a></li>
-                                        <li><a href="{{ URL::to('chat') }}">Chat Module</a></li>
                                     </ul>
                                 </li>
-                                {{-- /MoDULE KOPRASI --}}
+                                {{-- /MODULE GENERATOR --}}
                                 
-                                {{-- MoDULE POLIKLINIK --}}
-                                <li><a><i class="fa fa-clone"></i>Poliklinik <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
+                                {{-- MoDULE ANGGOTA --}}
+                                <li><a href="{{ URL::to('anggota') }}"><i class="fa fa-clone"></i>Anggota <span class="fa fa-chevron-down"></span></a>
+                                   {{--  <ul class="nav child_menu">
                                         <li><a href="{{ URL::to('kegiatan') }}">Kegiatan</a></li>
                                         <li><a href="{{ URL::to('pasien') }}">Pasien</a></li>
                                         <li><a href="{{ URL::to('obat') }}">Data Obat</a></li>
@@ -133,9 +132,10 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                    </ul>
+                                    </ul> --}}
                                 </li>
-                                {{-- /MoDULE POLIKLINIK --}}
+                                {{-- /MoDULE ANGGOTA --}}
+
 
                                 {{-- MoDULE UPLOAD --}}
 
@@ -185,7 +185,7 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="">
                                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="../user.png" alt="">{{ Session::get('user_name') }}
+                                        <img src="{{ asset('assets/image/user.png') }}" alt="">{{ Session::get('user_name') }}
                                         <span class=" fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-usermenu pull-right">
