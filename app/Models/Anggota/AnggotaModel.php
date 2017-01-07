@@ -27,7 +27,7 @@ class AnggotaModel extends Model
 			'nama_anggota'	=> $data['NamaAnggota'],
 			'no_telpon'		=> $data['NoTelpon'],
 			'alamat'		=> $data['Alamat'],
-			// 'created_at'
+			'created_at'	=> date('Y-m-d'),
 			// 'created_by'
 			]);
 
