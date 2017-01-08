@@ -38,6 +38,22 @@
                   <input type="text"  name="TanggalSetoran" class="form-control col-md-7 col-xs-12 tanggal" value="{{ $DataSetoran->tanggal_setoran }}">
                 </div>
               </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> No SUM (Slip Uang Masuk)<span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input type="text"  name="NoSum" class="form-control col-md-7 col-xs-12" value="{{ $DataSetoran->no_sum }}">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> No BA (Buku Anggota)<span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input type="text"  name="NoBa" class="form-control col-md-7 col-xs-12" value="{{ $DataSetoran->no_ba }}">
+                </div>
+              </div>
               
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Keterangan<span class="required">*</span>
@@ -45,6 +61,30 @@
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <textarea name="Keterangan" class="form-control col-md-7 col-xs-12">{{ $DataSetoran->keterangan }}</textarea>
                 </div>
+              </div>
+
+               <div class="divider-dashed"></div>
+
+              <div class="form-group">
+                <table class="table table-striped jambo_table ">
+                  <thead>
+                    <th >Nama Akun</th>
+                    <th style="width: 150px">No Akun</th>
+                    <th style="width: 200px">Debet</th>
+                    <th style="width: 200px">Kredit</th>
+                  </thead>
+                  <tbody>
+                    @foreach($DataSetoranDetail as $detail)
+                      <tr>
+                        <td></td>
+                        <td>{{ $detail->no_akun }}</td>
+                        <td><input type="text" name="Detail[NilaiK]" class="form-control col-md-7 col-xs-12 text-right" value="{{ $detail->nilai_d }}" @if($detail->no_akun != 100 ) readonly="true" @endif ></td>
+                        <td><input type="text" name="Detail[NilaiK]" class="form-control col-md-7 col-xs-12 text-right" value="{{ $detail->nilai_k }}" @if($detail->no_akun == 100 ) readonly="true" @endif ></td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+
               </div>
 
               <div class="ln_solid"></div>

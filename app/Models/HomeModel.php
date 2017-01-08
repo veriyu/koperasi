@@ -7,41 +7,17 @@ use DB;
 class HomeModel extends Model
 {
 
-	public static function CountPasien(){
+	public static function getTotalSetoran(){
 
 
-		$result = DB::table('poliklinik_pasien')->select('PasienId')->count();
-
-		return $result;
-	}
-
-	public static function CountKegiatan(){
-
-
-		$result = DB::table('poliklinik_kegiatan')->select('KegiatanId')->count();
+		$result = DB::table('setoran')->select('id_setoran')->count();
 
 		return $result;
 	}
 
-	public static function BulanIni(){
-		$date = date('Y-m-d');
+	public static function getLastSetoran(){
+		$result = DB::table('setoran')->select('nama_anggota','tanggal_setoran','keterangan')->join('anggota','setoran.id_anggota','anggota.id_anggota')->orderby('setoran.created_at','desc')->first();
 
-		$Tahun = date('Y');
-		$Bulan = date('m');
-
-		$result = DB::table('poliklinik_kegiatan')->select('KegiatanId')->whereRaw("substr(Tanggal, 6,2) = '".$Bulan."' ")->count();
-
-		return $result;
-	}
-
-	public static function BulanLalu(){
-		$date = date('Y-m-d');
-
-		$Tahun = date('Y');
-		$Bulan = date('m')-1;
-
-		$result = DB::table('poliklinik_kegiatan')->select('KegiatanId')->whereRaw("substr(Tanggal, 6,2) = '".$Bulan."' ")->count();
-		
 		return $result;
 	}
 }

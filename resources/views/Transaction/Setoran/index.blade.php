@@ -44,18 +44,18 @@
                             <th width="100px"></th>
                           </thead>
                           <tbody>
-                            <tr>
                               @foreach($rows as $row)
-                                <td>{{ $no++ }}</td>
-                                <td>{{ $row->no_anggota }}</td>
-                                <td>{{ $row->nama_anggota }}</td>
-                                <td>{{ $row->keterangan }}</td>
-                                <td>
-                                    <a href="{{ route('update.setoran',Encrypter::encryptID($row->id_setoran) ) }}" class="tips btn btn-xs btn-info" title="Edit"><i class="fa fa-folder-open-o"></i></a>
-                                    <button value="{{ $row->id_setoran }}" class="tips btn btn-xs btn-danger hapus-siswa" title="Hapus" onclick="validation(this.value)"><i class="fa fa-trash"></i></button>
-                                  </td>
+                                <tr>
+                                    <td>{{ $no++ }}</td>
+                                    <td>{{ $row->no_anggota }}</td>
+                                    <td>{{ $row->nama_anggota }}</td>
+                                    <td>{{ $row->keterangan }}</td>
+                                    <td>
+                                        <a href="{{ route('update.setoran',Encrypter::encryptID($row->id_setoran) ) }}" class="tips btn btn-xs btn-info" title="Edit"><i class="fa fa-folder-open-o"></i></a>
+                                        <button value="{{ $row->id_setoran }}" class="tips btn btn-xs btn-danger hapus-siswa" title="Hapus" onclick="validation(this.value)"><i class="fa fa-trash"></i></button>
+                                      </td>
+                                </tr>
                               @endforeach
-                            </tr>
                           </tbody>
                         </table>
                         <div class="row"></div>

@@ -25,12 +25,9 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-
-        $this->data['TotalPasien']      = HomeModel::CountPasien();
-        $this->data['TotalKegiatan']    = HomeModel::CountKegiatan();
-        $this->data['BulanIni']         = HomeModel::BulanIni();
-        $this->data['BulanLalu']        = HomeModel::BulanLalu();
-
+        $this->data['TotalSetoran']     = HomeModel::getTotalSetoran();
+        $this->data['LastSetoran']      = HomeModel::getLastSetoran();
+        // dd($this->data['LastSetoran']);
         return view('home',$this->data);
     }
 }

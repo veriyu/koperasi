@@ -71,8 +71,10 @@ class SetoranController extends Controller
 
         $id = Encrypter::encryptID($id,true);
 
-        $this->data['DataAnggota'] = SetoranModel::getAnggota();
-        $this->data['DataSetoran'] = SetoranModel::getRow($id);
+        $this->data['DataAnggota']          = SetoranModel::getAnggota();
+        $this->data['DataSetoran']          = SetoranModel::getRow($id);
+        $this->data['DataSetoranDetail']    = SetoranModel::getRowDetail($id);
+        // dd($this->data['DataSetoranDetail']);
 
         return view('Transaction.Setoran.form_update',$this->data);
     }
@@ -80,7 +82,7 @@ class SetoranController extends Controller
     public function save(Request $request){
 
         $data = $request->all();
-        
+        // dd($data);
         if($data['IdSetoran'] == 'NULL'){
             
             SetoranModel::getInsert($data);
