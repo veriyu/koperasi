@@ -56,6 +56,14 @@
               </div>
               
               <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> Jumlah Setoran<span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <input type="text"  name="Jumlah" class="form-control col-md-7 col-xs-12 text-right" value="{{ number_format($DataSetoran->jumlah) }}">
+                </div>
+              </div>
+
+              <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Keterangan<span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">

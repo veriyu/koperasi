@@ -50,7 +50,6 @@ MODULE Anggota
 MODULE Anggota
 */
 
-
 // MODULE Setoran
 	Route::get('setoran', 'Transaction\SetoranController@index')->name('index.setoran');
 	Route::get('update/setoran/{id?}', 'Transaction\SetoranController@showdata')->name('update.setoran');
@@ -59,3 +58,12 @@ MODULE Anggota
 	Route::get('deleteSetoran/{id?}', 'Transaction\SetoranController@delete');
 	Route::post('simpan/setoran','Transaction\SetoranController@save')->name('save.setoran');
 // MODULE Setoran
+
+// MODULE User
+	Route::get('user', 'UserController@index')->name('index.user');
+	Route::get('update/user/{id?}', 'UserController@showdata')->name('update.user');
+	Route::get('tambah/user','UserController@create')->name('create.user');
+	// route untuk ajax
+	Route::get('deleteUser/{id?}', 'UserController@delete');
+	Route::post('simpan/user','UserController@save')->name('save.user');
+// MODULE User

@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="shortcut icon" href="{{ asset('favicon.ico')}}" type="image/x-icon"> 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -111,35 +111,23 @@
                                 </li>
                                 @endif
                                 
-                                {{-- MODULE GENERATOR --}}
-                                <li><a><i class="fa fa-clone"></i>Module <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="{{ URL::to('module') }}">Master Module</a></li>
-                                    </ul>
+                                {{-- MoDULE USER --}}
+                                <li>
+                                    <a href="{{ URL::to('user') }}"><i class="fa fa-clone"></i>User </a>
                                 </li>
-                                {{-- /MODULE GENERATOR --}}
-                                
+                                {{-- /MoDULE USER --}}
+
                                 {{-- MoDULE ANGGOTA --}}
                                 <li>
-                                    <a href="{{ URL::to('anggota') }}"><i class="fa fa-clone"></i>Anggota <span class="fa fa-chevron-down"></span></a>
+                                    <a href="{{ URL::to('anggota') }}"><i class="fa fa-clone"></i>Anggota </a>
                                 </li>
                                 {{-- /MoDULE ANGGOTA --}}
 
                                 {{-- MoDULE SETORAN --}}
                                 <li>
-                                    <a href="{{ URL::to('setoran') }}"><i class="fa fa-clone"></i>Setoran <span class="fa fa-chevron-down"></span></a>
+                                    <a href="{{ URL::to('setoran') }}"><i class="fa fa-clone"></i>Setoran </span></a>
                                 </li>
                                 {{-- /MoDULE SETORAN --}}
-
-                                {{-- MoDULE UPLOAD --}}
-
-                                @if(Session::get('user_group') == 'admin')
-                                <li>
-                                    <a href="{{ URL::to('upload') }}"><i class="fa fa-clone"></i>Upload <span class=""></span></a>
-                                
-                                </li>
-                                {{-- /MoDULE UPLOAD --}}
-                                @endif
                                 
                             </ul>
                         </div>
