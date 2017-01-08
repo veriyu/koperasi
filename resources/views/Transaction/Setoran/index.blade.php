@@ -40,6 +40,7 @@
                             <th width="20px">No</th>
                             <th width="120px">No Anggota</th>
                             <th width="">Nama Anggota</th>
+                            <th width="150px">Jumlah</th>
                             <th>Keterangan</th>
                             <th width="100px"></th>
                           </thead>
@@ -49,6 +50,7 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $row->no_anggota }}</td>
                                     <td>{{ $row->nama_anggota }}</td>
+                                    <td class="tex-right">{{ number_format($row->jumlah) }}</td>
                                     <td>{{ $row->keterangan }}</td>
                                     <td>
                                         <a href="{{ route('update.setoran',Encrypter::encryptID($row->id_setoran) ) }}" class="tips btn btn-xs btn-info" title="Edit"><i class="fa fa-folder-open-o"></i></a>

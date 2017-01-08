@@ -81,65 +81,65 @@
                     <tr>
                       <td>Kas</td>
                       <td>100</td>
-                      <input type="hidden" name="Detail[NoAkun]" value="100">
-                      <td><input type="text" name="Detail[NilaiD]" class="form-control col-md-7 col-xs-12 text-right"></td>
-                      <td><input type="text" name="Detail[NilaiK]" class="form-control col-md-7 col-xs-12 text-right" readonly="true"></td>
+                      <input type="hidden" name="Detail[0][NoAkun]" value="100">
+                      <td><input type="text" name="Detail[0][NilaiD]" class="form-control col-md-7 col-xs-12 text-right"></td>
+                      <td><input type="text" name="Detail[0][NilaiK]" class="form-control col-md-7 col-xs-12 text-right" readonly="true"></td>
                     </tr>
                     <tr>
                       <td>Simpanan SS</td>
                       <td>460</td>
-                      <input type="hidden" name="Detail[NoAkun]" value="460">
-                      <td><input type="text" name="Detail[NilaiD]" class="form-control col-md-7 col-xs-12 text-right" readonly="true"></td>
-                      <td><input type="text" name="Detail[NilaiK]" class="form-control col-md-7 col-xs-12 text-right"></td>
+                      <input type="hidden" name="Detail[1][NoAkun]" value="460">
+                      <td><input type="text" name="Detail[1][NilaiD]" class="form-control col-md-7 col-xs-12 text-right" readonly="true"></td>
+                      <td><input type="text" name="Detail[1][NilaiK]" class="form-control col-md-7 col-xs-12 text-right"></td>
                     </tr>
                     <tr>
                       <td>Simpanan Pokok</td>
                       <td>500</td>
-                      <input type="hidden" name="Detail[NoAkun]" value="500">
-                      <td><input type="text" name="Detail[NilaiD]" class="form-control col-md-7 col-xs-12 text-right" readonly="true"></td>
-                      <td><input type="text" name="Detail[NilaiK]" class="form-control col-md-7 col-xs-12 text-right"></td>
+                      <input type="hidden" name="Detail[2][NoAkun]" value="500">
+                      <td><input type="text" name="Detail[2][NilaiD]" class="form-control col-md-7 col-xs-12 text-right" readonly="true"></td>
+                      <td><input type="text" name="Detail[2][NilaiK]" class="form-control col-md-7 col-xs-12 text-right"></td>
                     </tr>
                     <tr>
                       <td>Simpanan Wajib</td>
                       <td>510</td>
-                      <input type="hidden" name="Detail[NoAkun]" value="510">
-                      <td><input type="text" name="Detail[NilaiD]" class="form-control col-md-7 col-xs-12 text-right" readonly="true"></td>
-                      <td><input type="text" name="Detail[NilaiK]" class="form-control col-md-7 col-xs-12 text-right"></td>
+                      <input type="hidden" name="Detail[3][NoAkun]" value="510">
+                      <td><input type="text" name="Detail[3][NilaiD]" class="form-control col-md-7 col-xs-12 text-right" readonly="true"></td>
+                      <td><input type="text" name="Detail[3][NilaiK]" class="form-control col-md-7 col-xs-12 text-right"></td>
                     </tr>
                     <tr>
                       <td>Angsuran</td>
                       <td>520</td>
-                      <input type="hidden" name="Detail[NoAkun]" value="520">
-                      <td><input type="text" name="Detail[NilaiD]" class="form-control col-md-7 col-xs-12 text-right" readonly="true"></td>
-                      <td><input type="text" name="Detail[NilaiK]" class="form-control col-md-7 col-xs-12 text-right"></td>
+                      <input type="hidden" name="Detail[4][NoAkun]" value="520">
+                      <td><input type="text" name="Detail[4][NilaiD]" class="form-control col-md-7 col-xs-12 text-right" readonly="true"></td>
+                      <td><input type="text" name="Detail[4][NilaiK]" class="form-control col-md-7 col-xs-12 text-right"></td>
                     </tr>
                     <tr>
                       <td>Bunga Pinjaman</td>
                       <td>600</td>
-                      <input type="hidden" name="Detail[NoAkun]" value="600">
-                      <td><input type="text" name="Detail[NilaiD]" class="form-control col-md-7 col-xs-12 text-right" readonly="true"></td>
-                      <td><input type="text" name="Detail[NilaiK]" class="form-control col-md-7 col-xs-12 text-right"></td>
+                      <input type="hidden" name="Detail[5][NoAkun]" value="600">
+                      <td><input type="text" name="Detail[5][NilaiD]" class="form-control col-md-7 col-xs-12 text-right" readonly="true"></td>
+                      <td><input type="text" name="Detail[5][NilaiK]" class="form-control col-md-7 col-xs-12 text-right"></td>
                     </tr>
                     <tr>
                       <td>Service Fee</td>
                       <td>603</td>
-                      <input type="hidden" name="Detail[NoAkun]" value="603">
-                      <td><input type="text" name="Detail[NilaiD]" class="form-control col-md-7 col-xs-12 text-right" readonly="true"></td>
-                      <td><input type="text" name="Detail[NilaiK]" class="form-control col-md-7 col-xs-12 text-right"></td>
+                      <input type="hidden" name="Detail[6][NoAkun]" value="603">
+                      <td><input type="text" name="Detail[6][NilaiD]" class="form-control col-md-7 col-xs-12 text-right" readonly="true"></td>
+                      <td><input type="text" name="Detail[6][NilaiK]" class="form-control col-md-7 col-xs-12 text-right"></td>
                     </tr>
                     <tr>
                       <td>Uang Pangkal</td>
                       <td>604</td>
-                      <input type="hidden" name="Detail[NoAkun]" value="604">
-                      <td><input type="text" name="Detail[NilaiD]" class="form-control col-md-7 col-xs-12 text-right" readonly="true"></td>
-                      <td><input type="text" name="Detail[NilaiK]" class="form-control col-md-7 col-xs-12 text-right"></td>
+                      <input type="hidden" name="Detail[7][NoAkun]" value="604">
+                      <td><input type="text" name="Detail[7][NilaiD]" class="form-control col-md-7 col-xs-12 text-right" readonly="true"></td>
+                      <td><input type="text" name="Detail[7][NilaiK]" class="form-control col-md-7 col-xs-12 text-right"></td>
                     </tr>
                     <tr>
                       <td>Pend Lain-lain</td>
                       <td>619</td>
-                      <input type="hidden" name="Detail[NoAkun]" value="619">
-                      <td><input type="text" name="Detail[NilaiD]" class="form-control col-md-7 col-xs-12 text-right" readonly="true"></td>
-                      <td><input type="text" name="Detail[NilaiK]" class="form-control col-md-7 col-xs-12 text-right"></td>
+                      <input type="hidden" name="Detail[8][NoAkun]" value="619">
+                      <td><input type="text" name="Detail[8][NilaiD]" class="form-control col-md-7 col-xs-12 text-right" readonly="true"></td>
+                      <td><input type="text" name="Detail[8][NilaiK]" class="form-control col-md-7 col-xs-12 text-right"></td>
                     </tr>
                   </tbody>
                 </table>

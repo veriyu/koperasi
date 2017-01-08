@@ -60,12 +60,12 @@ class SetoranModel extends Model
 	}
 
 	public static function insertDetail($id_setoran,$DataDetail){
-
+		// dd($DataDetail);
 		DB::table('setoran_detail')->where('id_setoran',$id_setoran)->delete();
 
 		foreach ($DataDetail as $detail) {
-
-			if(!empty($detail['NilaiK']) || $detail['NoAkun'] == 100 ){
+			// dd($detail['NoAkun']);
+			// if(!empty($detail['NilaiK']) || $detail['NoAkun'] == 100 ){
 
 				DB::table('setoran_detail')->insert([
 					'id_setoran'	=> $id_setoran,
@@ -73,7 +73,7 @@ class SetoranModel extends Model
 					'nilai_d'		=> (empty($detail['NilaiD'])? 0 : $detail['NilaiD']),
 					'nilai_k'		=> (empty($detail['NilaiK'])? 0 : $detail['NilaiK']),
 					]);
-			}
+			// }
 		}
 		
 	}
