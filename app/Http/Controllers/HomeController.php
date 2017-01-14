@@ -29,5 +29,6 @@ class HomeController extends Controller
         $this->data['LastSetoran']      = HomeModel::getLastSetoran();
         // dd($this->data['LastSetoran']);
         return view('home',$this->data);
+        // return view('home');
     }
 }

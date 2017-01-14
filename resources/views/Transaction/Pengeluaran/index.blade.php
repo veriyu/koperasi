@@ -19,10 +19,10 @@
               {{-- <div class="col-md-12"> --}}
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Setoran<small>dana masuk koperasi</small></h2>
+                    <h2>Pengeluaran<small>pengeluaran dana koperasi</small></h2>
                     <div class="pull-right">
                       {{-- <a href="{{ URL::to('tambahModule') }}" class="tips btn btn-xs btn-info" title="Tambah Siswa"><i class="fa fa-plus"></i> Tambah</a> --}}
-                      <a href="{{ route('create.setoran') }}" class="tips btn btn-xs btn-info" title="Tambah Siswa"><i class="fa fa-plus"></i> Tambah</a>
+                      <a href="{{ route('create.pengeluaran') }}" class="tips btn btn-xs btn-info" title="Tambah Siswa"><i class="fa fa-plus"></i> Tambah</a>
 
 
                     </div>

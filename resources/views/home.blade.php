@@ -15,8 +15,10 @@
       </div>
       <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count">
         <span class="count_top"><i class="fa fa-user"></i> Setoran Terakhir</span>
-        <div class="count green ">{{ $LastSetoran->nama_anggota }}</div>
-        <span class="count_bottom">{{ $LastSetoran->tanggal_setoran }} : {{ $LastSetoran->keterangan }}</span>
+        @if($LastSetoran != NULL)
+          <div class="count green ">{{ $LastSetoran->nama_anggota }}</div>
+          <span class="count_bottom">{{ $LastSetoran->tanggal }} : {{ $LastSetoran->keterangan }}</span>
+        @endif
       </div>
       {{-- <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count"> --}}
         {{-- <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>

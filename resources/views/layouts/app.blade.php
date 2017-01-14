@@ -100,7 +100,7 @@
                         <div class="menu_section">
                             <h3>General</h3>
                             <ul class="nav side-menu">
-                                @if(Session::get('user_group') == 'admin')
+                                @if(Session::get('user_group') == 'admin' || Session::get('user_group') == 'super admin')
                                 <li><a href="{{URL::to('/home')}}"><i class="fa fa-home"></i> Beranda </a>
                                 {{-- <li>{{  Session::get('user_group')  }}</li> --}}
                                     {{-- <ul class="nav child_menu">
@@ -111,24 +111,46 @@
                                 </li>
                                 @endif
                                 
-                                {{-- MoDULE USER --}}
+                                {{-- MODULE USER --}}
                                 <li>
                                     <a href="{{ URL::to('user') }}"><i class="fa fa-clone"></i>User </a>
                                 </li>
-                                {{-- /MoDULE USER --}}
+                                {{-- /MODULE USER --}}
 
-                                {{-- MoDULE ANGGOTA --}}
+                                {{-- MODULE ANGGOTA --}}
                                 <li>
                                     <a href="{{ URL::to('anggota') }}"><i class="fa fa-clone"></i>Anggota </a>
                                 </li>
-                                {{-- /MoDULE ANGGOTA --}}
+                                {{-- /MODULE ANGGOTA --}}
 
-                                {{-- MoDULE SETORAN --}}
+                                {{-- MODULE SETORAN --}}
                                 <li>
                                     <a href="{{ URL::to('setoran') }}"><i class="fa fa-clone"></i>Setoran </span></a>
                                 </li>
-                                {{-- /MoDULE SETORAN --}}
-                                
+                                {{-- /MODULE SETORAN --}}
+
+                                {{-- MODULE SETORAN --}}
+                                <li>
+                                    <a href="{{ URL::to('pengeluaran') }}"><i class="fa fa-clone"></i>Pengeluaran </span></a>
+                                </li>
+                                {{-- /MODULE SETORAN --}}
+
+                                {{-- MODULE LAPORAN --}}
+                                <li><a><i class="fa fa-clone"></i>Laporan <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="{{ URL::to('jurnal') }}">Jurnal</a></li>
+                                        {{-- <li><a href="{{ URL::to('pasien') }}">Pasien</a></li> --}}
+                                        {{-- <li><a href="{{ URL::to('obat') }}">Data Obat</a></li> --}}
+                                        {{-- <li><a> <span class="fa fa-chevron-down"></span>Laporan</a> --}}
+                                            {{-- <ul class="nav child_menu"> --}}
+                                                {{-- <li class="sub_menu"> --}}
+                                                    {{-- <a href="{{ URL::to('laporan_poliklinik_kegiatan') }}">Laporan Kegiatan</a> --}}
+                                                {{-- </li> --}}
+                                            {{-- </ul> --}}
+                                        {{-- </li> --}}
+                                    </ul>
+                                </li>
+                                {{-- MODULE LAPORAN --}}
                             </ul>
                         </div>
                         

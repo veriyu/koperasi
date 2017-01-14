@@ -59,6 +59,25 @@ MODULE Anggota
 	Route::post('simpan/setoran','Transaction\SetoranController@save')->name('save.setoran');
 // MODULE Setoran
 
+// MODULE Pengeluaran
+	Route::get('pengeluaran', 'Transaction\PengeluaranController@index')->name('index.pengeluaran');
+	Route::get('update/pengeluaran/{id?}', 'Transaction\PengeluaranController@showdata')->name('update.pengeluaran');
+	Route::get('tambah/pengeluaran','Transaction\PengeluaranController@create')->name('create.pengeluaran');
+	// route untuk ajax
+	Route::get('deletepengeluaran/{id?}', 'Transaction\PengeluaranController@delete');
+	Route::post('simpan/pengeluaran','Transaction\PengeluaranController@save')->name('save.pengeluaran');
+// MODULE Pengeluaran
+
+// MODULE Laporan
+	Route::get('jurnal', 'Laporan\JurnalController@index')->name('index.jurnal');
+	// Route::get('update/jurnal/{id?}', 'Laporan\JurnalController@showdata')->name('update.jurnal');
+	Route::get('laporan/jurnal', 'Laporan\JurnalController@showdata')->name('show.jurnal');
+	Route::get('tambah/jurnal','Laporan\JurnalController@create')->name('create.jurnal');
+	// route untuk ajax
+	Route::get('deletejurnal/{id?}', 'Laporan\JurnalController@delete');
+	Route::post('simpan/jurnal','Laporan\JurnalController@save')->name('save.jurnal');
+// MODULE Laporan
+
 // MODULE User
 	Route::get('user', 'UserController@index')->name('index.user');
 	Route::get('update/user/{id?}', 'UserController@showdata')->name('update.user');

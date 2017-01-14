@@ -1,18 +1,19 @@
 <?php
 
 namespace App\Models\Transaction;
+
 use Illuminate\Database\Eloquent\Model;
 use DB;
 use Session;
 
-class SetoranModel extends Model
+class PengeluaranModel extends Model
 {
 	
 	
 	public static function getRows($param){
 		
 		$results = DB::table('transaksi')
-					->where('tipe_transaksi','MASUK')
+					->where('tipe_transaksi','KELUAR')
 					->join('anggota','anggota.id_anggota','transaksi.id_anggota')
 					->paginate($param);
 
@@ -32,12 +33,13 @@ class SetoranModel extends Model
 	}
 
 	public static function getInsert($data){
-
+		
 		$id = DB::table('transaksi')->insertGetid([
-  			'id_anggota'		=> $data['NoAnggota'],
+  			'id_anggota'		=> (empty($data['NoAnggota'])?0:$data['NoAnggota']),
+  			'dibayar_ke'		=> $data['DibayarKe'],
+  			'tipe_transaksi'	=> $data['Tipe'],
   			'tanggal'			=> $data['TanggalSetoran'],
-  			'tipe_transaksi'	=> 'MASUK',
-  			'no_sum'			=> $data['NoSum'],
+  			'no_suk'			=> $data['NoSuk'],
   			'no_ba'				=> $data['NoBa'],
   			'keterangan'		=> $data['Keterangan'],
   			'created_at'		=> date('Y-m-d H:i:s'),
@@ -48,19 +50,19 @@ class SetoranModel extends Model
 	}
 
 	public static function getUpdate($data){
-		// dd($data);
-		DB::table('transaksi')->where('id_transaksi',$data['IdTransaksi'])->update([
-  			'id_anggota'		=> $data['NoAnggota'],
+
+		DB::table('setoran')->where('id_setoran',$data['IdSetoran'])->update([
+  			'id_anggota'		=> (empty($data['NoAnggota'])?0:$data['NoAnggota']),
+  			'dibayar_ke'		=> $data['DibayarKe'],
+  			'tipe_transaksi'	=> $data['Tipe'],
   			'tanggal'			=> $data['TanggalSetoran'],
-  			// 'tipe_transaksi'	=> 'MASUK',
-  			'keterangan'		=> $data['Keterangan'],
-  			'no_sum'			=> $data['NoSum'],
+  			'no_suk'			=> $data['NoSuk'],
   			'no_ba'				=> $data['NoBa'],
+  			'keterangan'		=> $data['Keterangan'],
   			'updated_at'		=> date('Y-m-d H:i:s'),
   			'updated_by'		=> Session::get('user_name')
 			]);
 
-		self::insertDetail($data['IdTransaksi'],$data['Detail']);
 	}
 
 	public static function insertDetail($id_transaksi,$DataDetail){
@@ -74,8 +76,8 @@ class SetoranModel extends Model
 				DB::table('transaksi_detail')->insert([
 					'id_transaksi'	=> $id_transaksi,
 					'no_akun'		=> $detail['NoAkun'],
-					'nilai_d'		=> (empty($detail['NilaiD'])? Null : $detail['NilaiD']),
-					'nilai_k'		=> (empty($detail['NilaiK'])? Null : $detail['NilaiK']),
+					'nilai_d'		=> (empty($detail['NilaiD'])? 0 : $detail['NilaiD']),
+					'nilai_k'		=> (empty($detail['NilaiK'])? 0 : $detail['NilaiK']),
 					]);
 			// }
 		}

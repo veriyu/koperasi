@@ -11,7 +11,7 @@
             <br />
             <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{ route('save.setoran') }}" method="POST">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-            <input type="hidden" name="IdSetoran" value="{{ $DataSetoran->id_setoran }}">
+            <input type="hidden" name="IdTransaksi" value="{{ $DataSetoran->id_transaksi }}">
 
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">No Anggota<span class="required">*</span>
@@ -35,7 +35,7 @@
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> Tanggal Setoran<span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text"  name="TanggalSetoran" class="form-control col-md-7 col-xs-12 tanggal" value="{{ $DataSetoran->tanggal_setoran }}">
+                  <input type="text"  name="TanggalSetoran" class="form-control col-md-7 col-xs-12 tanggal" value="{{ $DataSetoran->tanggal }}">
                 </div>
               </div>
 
@@ -82,13 +82,17 @@
                     <th style="width: 200px">Kredit</th>
                   </thead>
                   <tbody>
+                    <?php $i = 0; ?>
                     @foreach($DataSetoranDetail as $detail)
                       <tr>
                         <td></td>
-                        <td>{{ $detail->no_akun }}</td>
-                        <td><input type="text" name="Detail[NilaiK]" class="form-control col-md-7 col-xs-12 text-right" value="{{ $detail->nilai_d }}" @if($detail->no_akun != 100 ) readonly="true" @endif ></td>
-                        <td><input type="text" name="Detail[NilaiK]" class="form-control col-md-7 col-xs-12 text-right" value="{{ $detail->nilai_k }}" @if($detail->no_akun == 100 ) readonly="true" @endif ></td>
+                        <td>{{ $detail->no_akun }}
+                            <input type="hidden" name="Detail[{{ $i }}][NoAkun]" value="{{ $detail->no_akun }}">
+                        </td>
+                        <td><input type="text" name="Detail[{{ $i }}][NilaiD]" class="form-control col-md-7 col-xs-12 text-right" value="{{ $detail->nilai_d }}" @if($detail->no_akun != 100 ) readonly="true" @endif ></td>
+                        <td><input type="text" name="Detail[{{ $i }}][NilaiK]" class="form-control col-md-7 col-xs-12 text-right" value="{{ $detail->nilai_k }}" @if($detail->no_akun == 100 ) readonly="true" @endif ></td>
                       </tr>
+                    <?php $i++ ?>
                     @endforeach
                   </tbody>
                 </table>

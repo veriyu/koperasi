@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Transaction;
 
 // call a model
-use App\Models\Transaction\SetoranModel;
+use App\Models\Transaction\PengeluaranModel;
 
 // Extend Controller
 use App\Http\Controllers\Controller;
@@ -17,7 +17,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use App\Helpers\Encrypter;
 use Session;
 
-class SetoranController extends Controller
+class PengeluaranController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -45,7 +45,7 @@ class SetoranController extends Controller
         
         $param = static::$perpage;
 
-        $this->data['rows']     = SetoranModel::getRows($param);
+        $this->data['rows']     = PengeluaranModel::getRows($param);
 
         // numbering
         $currentPage     = LengthAwarePaginator::resolveCurrentPage();
@@ -57,23 +57,23 @@ class SetoranController extends Controller
         }
         // /numbering
 
-        return view('Transaction.Setoran.index',$this->data);
+        return view('Transaction.Pengeluaran.index',$this->data);
     }
 
     public function create(Request $request){
 
-        $this->data['DataAnggota'] = SetoranModel::getAnggota();
+        $this->data['DataAnggota'] = PengeluaranModel::getAnggota();
 
-        return view('Transaction.Setoran.form',$this->data);
+        return view('Transaction.Pengeluaran.form',$this->data);
     }
 
     public function showdata($id){
 
         $id = Encrypter::encryptID($id,true);
 
-        $this->data['DataAnggota']          = SetoranModel::getAnggota();
-        $this->data['DataSetoran']          = SetoranModel::getRow($id);
-        $this->data['DataSetoranDetail']    = SetoranModel::getRowDetail($id);
+        $this->data['DataAnggota']          = PengeluaranModel::getAnggota();
+        $this->data['DataSetoran']          = PengeluaranModel::getRow($id);
+        $this->data['DataSetoranDetail']    = PengeluaranModel::getRowDetail($id);
         // dd($this->data['DataSetoranDetail']);
 
         return view('Transaction.Setoran.form_update',$this->data);
@@ -82,16 +82,16 @@ class SetoranController extends Controller
     public function save(Request $request){
 
         $data = $request->all();
-        // dd($data);
-        if($data['IdTransaksi'] == 'NULL'){
+        
+        if($data['IdPengeluaran'] == 'NULL'){
             
-            SetoranModel::getInsert($data);
+            PengeluaranModel::getInsert($data);
         }else{
             
-            SetoranModel::getUpdate($data);
+            PengeluaranModel::getUpdate($data);
         }
 
-        return redirect('setoran');
+        return redirect('pengeluaran');
 
     }
 
@@ -99,7 +99,7 @@ class SetoranController extends Controller
 
         SetoranModel::getDelete($request->input('id'));
 
-        return redirect('setoran');
+        return redirect('pengeluaran');
     }
 
 }
