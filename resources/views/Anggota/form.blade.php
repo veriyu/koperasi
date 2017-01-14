@@ -29,6 +29,21 @@
                 </div>
               </div>
               
+               <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Status Keanggotaan<span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <div id="Status" class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-default" data-toggle-class="btn-default" data-toggle-passive-class="btn-default" id="StatusAktif">
+                      <input type="radio" name="Status" value="1" id="radioVal1" data-parsley-multiple="Status" checked="true"> &nbsp; Aktif &nbsp;
+                    </label>
+                    <label class="btn btn-default" data-toggle-class="btn-default" data-toggle-passive-class="btn-default" id="StatusNonAktif">
+                      <input type="radio" name="Status" value="0" id="radioVal2" data-parsley-multiple="Status" checked="false" > Non-Aktif
+                    </label>
+                  </div>
+                </div>
+              </div>
+
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Alamat<span class="required">*</span>
                 </label>
@@ -94,12 +109,28 @@ $('#sel').select2({
 
 });
 
+function checkStat(){
+  
+  var Stat1 = $('#radioVal1').val();
+  var Stat2 = $('#radioVal2').val();
+  console.log(Stat1);
+  console.log(Stat2);
+  if(Stat1 == 1){
+
+    $('#StatusNonAktif').removeClass('active');
+    $('#StatusAktif').addClass('active');
+  }else{
+    $('#StatusAktif').removeClass('active');
+    $('#StatusNonAktif').addClass('active');
+  }
+}
+
 $(document).ready(function() {
   $('.tanggal').datepicker({
     dateFormat: "yy-mm-dd",
   });
 
-  // $('.select2').select2();
+  checkStat();
 });
 
 </script>
