@@ -111,10 +111,13 @@
                                 </li>
                                 @endif
                                 
+
                                 {{-- MODULE USER --}}
+                                @if(Session::get('user_group') == 'super admin')
                                 <li>
                                     <a href="{{ URL::to('user') }}"><i class="fa fa-clone"></i>User </a>
                                 </li>
+                                @endif
                                 {{-- /MODULE USER --}}
 
                                 {{-- MODULE ANGGOTA --}}

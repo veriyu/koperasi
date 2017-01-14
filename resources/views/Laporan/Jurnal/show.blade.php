@@ -9,7 +9,7 @@
           {{-- HEADER --}}
             <div class="page-title">
               <div class="title_left">
-                <h3>Laporan Jurnal <small></small></h3>
+                <h3 class="">Laporan Jurnal <small></small></h3>
               </div>
 
               <div class="title_right">
@@ -120,18 +120,24 @@
                     <div class="row">
                       <div class="form-group">
                         <div class=" col-xs-12">
-                          <table class="table">
+                          <table class="table jambo_table">
                             <thead>
                               <tr>
                                 <th>Tanggal</th>
                                 <th>Nama Anggota</th>
                                 <th>Keterangan</th>
                                 <th>Nama Akun</th>
+                                <th>No Akun</th>
                                 <th>Nilai D</th>
                                 <th>Nilai K</th>
                               </tr>
                             </thead>
                             <tbody>
+                                @if(empty($DataLaporan))
+                                  <tr>
+                                    <td colspan="7" class="text-center" style="color: red;">Tidak Ada Data Untuk Tanggal {{ $awal }} s/d {{ $akhir }}</td>
+                                  </tr>
+                                @endif
                                 @foreach($DataLaporan as $header)
                                   <tr>
                                     <td>{{ $header['Tanggal'] }}</td>
@@ -140,9 +146,12 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
+                                    <td></td>
                                   </tr>
                                   @foreach($header['Detail'] as $detail)
+                                    @if($detail->nilai_d >0 | $detail->nilai_k >0)
                                     <tr>
+                                      <td></td>
                                       <td></td>
                                       <td></td>
                                       <td></td>
@@ -150,6 +159,7 @@
                                       <td class="text-right">{{ number_format($detail->nilai_d) }}</td>
                                       <td class="text-right">{{ number_format($detail->nilai_k) }}</td>
                                     </tr>
+                                    @endif
                                   @endforeach
                                 @endforeach
                             </tbody>

@@ -54,19 +54,21 @@ class JurnalController extends Controller
 
         $this->data['title']    = 'Setoran';
         $this->data['module']   = 'Koperasi';
+        $this->data['awal']     = $request->input('TanggalAwal');
+        $this->data['akhir']    = $request->input('TanggalAkhir');
 
         $ReportHeader = JurnalModel::getHeaderLaporan($request->input('TanggalAwal'),$request->input('TanggalAkhir'));
         
         $DataLaporan = array();
         
         foreach ($ReportHeader as $key => $value) {
-            
+            // dd($value);
             $Detail = JurnalModel::getDetailLaporan($value->id_transaksi);
-            dd($Detail);
+            // dd($Detail);
             $DataLaporan[] = array(
                 'Tanggal'       => $value->tanggal,
-                'Nama'          => 'name',
-                'Keterangan'    => 'ket,',
+                'Nama'          => $value->nama_anggota,
+                'Keterangan'    => $value->keterangan,
                 'Detail'        => $Detail,
             );
         }
