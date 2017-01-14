@@ -47,7 +47,7 @@
                         <div class=" col-xs-12">
                         {{-- content --}}
                         
-                        <form action="{{ URL::to('upload_file') }}" method="post" enctype="multipart/form-data"> 
+                        <form action="{{ route('data.upload') }}" method="post" enctype="multipart/form-data"> 
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <table class="table table-striped">
                                 
@@ -58,20 +58,17 @@
                                       <select name="Table" class="form-select"  style="width: 100%">
                                         <option value=""> ... </option>
                                         @foreach($tableName as $table)
-                                          <option value="{{ $table->Tables_in_poliklinik }}">{{ $table->Tables_in_poliklinik }}</option>
+                                          @if($table->Tables_in_koperasi == 'anggota')
+                                          <option value="{{ $table->Tables_in_koperasi }}">{{ $table->Tables_in_koperasi }}</option>
+                                          @endif
                                         @endforeach
                                       </select>
                                     </td>
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td>File 1</td>
+                                    <td>File</td>
                                     <td><input type="file" class="file" name="FileUpload1"></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>File 2</td>
-                                    <td><input type="file" name="FileUpload2"></td>
                                     <td></td>
                                 </tr>
                                 <tr>

@@ -47,7 +47,7 @@ class UploadController extends Controller
         $this->data['module']   = static::$module_name;
 
         $this->data['tableName'] = UploadModel::tableName();
-        // dd($this->data['tableName']);
+        
         return view('Upload.index',$this->data);
     }
 
@@ -58,45 +58,26 @@ class UploadController extends Controller
         $table_import = $request->input('Table');
         // dd($table_import);
         $file1 = $_FILES['FileUpload1']['tmp_name'];
-        $file2 = $_FILES['FileUpload2']['tmp_name'];
 
         Excel::load($file1, function($reader) use($table_import){
 
             $data = $reader->noHeading();
             $results = $data->get();
-
+            // dd($results);
             $row = 1;
             foreach($results as $detail) {
                 
                 $record = $detail->toArray();
+                if($row > 2) {
                 // dd($record);
-                if($row > 2) {
-                    UploadModel::insertDataExcelStorage($record, $table_import);
+                    UploadModel::insertDataExcel($record, $table_import);
                 }
 
                 $row++;
             }
 
         }); 
-
-        Excel::load($file2, function($reader) use($table_import){
-           
-            $data = $reader->noHeading();
-            $results = $data->get();
-            
-            $row = 1;
-            foreach($results as $detail) {
-                
-                $record = $detail->toArray();
-
-                if($row > 2) {
-                    UploadModel::updateDataExcelStorage($record, $table_import);
-                }
-
-                $row++;
-            }
-
-        }); 
+        dd('stop');
 
         return redirect('upload');
     }
