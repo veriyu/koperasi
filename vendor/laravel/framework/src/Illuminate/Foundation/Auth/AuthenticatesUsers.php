@@ -114,6 +114,8 @@ trait AuthenticatesUsers
     protected function authenticated(Request $request, $user)
     {
         //
+        $request->session()->put('user_group',Auth::user()->group); 
+        $request->session()->put('user_name',Auth::user()->name);
     }
 
     /**
