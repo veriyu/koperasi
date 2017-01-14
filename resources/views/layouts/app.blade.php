@@ -111,14 +111,25 @@
                                 </li>
                                 @endif
                                 
-
-                                {{-- MODULE USER --}}
+                                {{-- MODULE SUPER ADMIN --}}
                                 @if(Session::get('user_group') == 'super admin')
-                                <li>
-                                    <a href="{{ URL::to('user') }}"><i class="fa fa-clone"></i>User </a>
+                                <li><a><i class="fa fa-clone"></i>Administrator <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="{{ URL::to('upload') }}"><i class="fa fa-clone"></i>Upload</a></li>
+                                        <li><a href="{{ URL::to('user') }}"><i class="fa fa-clone"></i>User </a></li>
+                                        {{-- <li><a href="{{ URL::to('pasien') }}">Pasien</a></li> --}}
+                                        {{-- <li><a href="{{ URL::to('obat') }}">Data Obat</a></li> --}}
+                                        {{-- <li><a> <span class="fa fa-chevron-down"></span>Laporan</a> --}}
+                                            {{-- <ul class="nav child_menu"> --}}
+                                                {{-- <li class="sub_menu"> --}}
+                                                    {{-- <a href="{{ URL::to('laporan_poliklinik_kegiatan') }}">Laporan Kegiatan</a> --}}
+                                                {{-- </li> --}}
+                                            {{-- </ul> --}}
+                                        {{-- </li> --}}
+                                    </ul>
                                 </li>
                                 @endif
-                                {{-- /MODULE USER --}}
+                                {{-- MODULE SUPER ADMIN --}}
 
                                 {{-- MODULE ANGGOTA --}}
                                 <li>
