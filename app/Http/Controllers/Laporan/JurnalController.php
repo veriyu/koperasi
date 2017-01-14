@@ -42,6 +42,25 @@ class JurnalController extends Controller
 
         $this->data['title']    = 'Setoran';
         $this->data['module']   = 'Koperasi';
+        $this->data['Bulan']    = array(
+            'Januari'       => 'Januari',
+            'Februari'      => 'Februari',
+            'Maret'         => 'Maret',
+            'April'         => 'April',
+            'Mei'           => 'Mei',
+            'Juni'          => 'Juni',
+            'Juli'          => 'Juli',
+            'Agustus'       => 'Agustus',
+            'September'     => 'September',
+            'Oktober'       => 'Oktober',
+            'November'      => 'November',
+            'Desember'      => 'Desember',
+            );
+
+        $this->data['Tahun'] = array(
+            '2016'  => 2016,
+            '2017'  => 2017,
+            );
 
         return view('Laporan.Jurnal.index',$this->data);
     }
@@ -54,9 +73,10 @@ class JurnalController extends Controller
 
         $this->data['title']    = 'Setoran';
         $this->data['module']   = 'Koperasi';
+
         $this->data['awal']     = $request->input('TanggalAwal');
         $this->data['akhir']    = $request->input('TanggalAkhir');
-
+        // dd($request->all());
         $ReportHeader = JurnalModel::getHeaderLaporan($request->input('TanggalAwal'),$request->input('TanggalAkhir'));
         
         $DataLaporan = array();

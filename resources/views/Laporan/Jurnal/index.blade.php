@@ -75,6 +75,40 @@
                           </div>
                           <div class="clearfix" style="min-height: 10px"></div>
 
+                          <div class="row">
+                            <div class="col-md-4 text-right">
+                              <label class="control-label">Bulan</label>
+                            </div>
+                            <div class="col-md-4">
+                              <select name="Bulan" class="form-select" style="width: 100%">
+                                <option>Pilih Bulan</option>
+                                @foreach($Bulan as $bln)
+                                  <option value="{{$bln}}">{{$bln}}</option>
+                                @endforeach
+                              </select>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                          </div>
+                          <div class="clearfix" style="min-height: 10px"></div>
+
+                          <div class="row">
+                            <div class="col-md-4 text-right">
+                              <label class="control-label">Tahun</label>
+                            </div>
+                            <div class="col-md-4">
+                              <select name="Tahun" class="form-select" style="width: 100%">
+                                <option>Pilih Tahun</option>
+                                @foreach($Tahun as $thn)
+                                  <option value="{{$thn}}">{{$thn}}</option>
+                                @endforeach
+                              </select>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                          </div>
+                          <div class="clearfix" style="min-height: 10px"></div>
+
                           <div class="ln_solid"></div>
 
                           <div class="row">
@@ -124,15 +158,17 @@
 
 <script>
 
-$('.form-select').select2({
-  placeholder: "Pilih Pasien",
-  allowClear: true
-});
+
 
 $(document).ready(function() {
   $('.tanggal').datepicker({
     dateFormat: "yy-mm-dd",
   });
+
+$('.form-select').select2({
+  // placeholder: "Pilih Tahun",
+  allowClear: true
+});
 
 });
 

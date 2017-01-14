@@ -70,9 +70,10 @@ class UserController extends BaseController
 	public function logout() {
 		\Auth::logout();
 		\Session::flush();
+        // \Session::regenerate();
 
 		// return Redirect::to('')->with('message', \SiteHelpers::alert('info','Your are now logged out!'));
-		// return redirect()->route('login');
-		return redirect()->back();
+		return redirect()->route('login');
+		// return redirect()->back();
 	}
 }

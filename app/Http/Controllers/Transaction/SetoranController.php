@@ -42,7 +42,7 @@ class SetoranController extends Controller
 
         $this->data['title']    = 'Setoran';
         $this->data['module']   = 'Koperasi';
-        
+        // dd(Session::all());
         $param = static::$perpage;
 
         $this->data['rows']     = SetoranModel::getRows($param);
