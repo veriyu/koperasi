@@ -56,6 +56,7 @@ MODULE Anggota
 	Route::get('tambah/setoran','Transaction\SetoranController@create')->name('create.setoran');
 	// route untuk ajax get
 	Route::get('deleteSetoran/{id?}', 'Transaction\SetoranController@delete');
+	Route::get('dataAnggota/{id?}', 'Transaction\SetoranController@anggota');
 	Route::post('simpan/setoran','Transaction\SetoranController@save')->name('save.setoran');
 // MODULE Setoran
 

@@ -102,4 +102,11 @@ class SetoranController extends Controller
         return redirect('setoran');
     }
 
+    public function anggota(Request $request){
+        // dd($request->input('NoAnggota'));
+        $dataAnggota = SetoranModel::getDataAnggota($request->input('NoAnggota'));
+        // dd($dataAnggota);
+        return json_encode($dataAnggota);
+    }
+
 }

@@ -27,6 +27,8 @@ class HomeController extends Controller
     {
         $this->data['TotalSetoran']     = HomeModel::getTotalSetoran();
         $this->data['LastSetoran']      = HomeModel::getLastSetoran();
+        $this->data['TotalPengeluaran']     = HomeModel::getTotalPengeluaran();
+        $this->data['LastPengeluaran']      = HomeModel::getLastPengeluaran();
         // dd($this->data['LastSetoran']);
         return view('home',$this->data);
         // return view('home');

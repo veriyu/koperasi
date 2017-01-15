@@ -88,9 +88,15 @@ class SetoranModel extends Model
 	}
 
 	public static function getAnggota(){
-		$results = DB::table('anggota')->select('id_anggota','nama_anggota')->get();
+		$results = DB::table('anggota')->select('id_anggota','no_anggota','nama_anggota')->get();
 
 		return $results;
+	}
+
+	public static function getDataAnggota($NoAnggota){
+		$result = DB::table('anggota')->where('no_anggota',$NoAnggota)->first();
+
+		return $result;
 	}
 
 }

@@ -77,7 +77,7 @@ class UploadController extends Controller
             }
 
         }); 
-        dd('stop');
+        // dd('stop');
 
         return redirect('upload');
     }

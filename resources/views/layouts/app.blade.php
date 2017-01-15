@@ -76,7 +76,7 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="{{ URL::to('home') }}" class="site_title"><i class="fa fa-plus-square"></i> <span>Talenta Sejahtera</span></a>
+                        <a href="{{ URL::to('home') }}" class="site_title"><i class="fa fa-university"></i> <span>Talenta Sejahtera</span></a>
                     </div>
 
                     <div class="clearfix"></div>
