@@ -238,7 +238,11 @@ $(document).ready(function() {
     var value2 = $('#JumlahNilaiK').val();
     
     if(value1 != value2){
-      alert('Debet dan Kredit tidak balance');
+      swal({
+        title : "Peringatan",
+        text  : "Nilai Debet dan Kredit tidak balance",
+        type  : "warning",
+      });
       event.preventDefault();
     }
     // event.preventDefault();
