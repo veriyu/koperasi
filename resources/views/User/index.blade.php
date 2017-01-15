@@ -19,7 +19,7 @@
               {{-- <div class="col-md-12"> --}}
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Setoran<small>dana masuk koperasi</small></h2>
+                    <h2>User<small>pengelolaan pengguna aplikasi</small></h2>
                     <div class="pull-right">
                       {{-- <a href="{{ URL::to('tambahModule') }}" class="tips btn btn-xs btn-info" title="Tambah Siswa"><i class="fa fa-plus"></i> Tambah</a> --}}
                       <a href="{{ route('create.user') }}" class="tips btn btn-xs btn-info" title="Tambah Siswa"><i class="fa fa-plus"></i> Tambah</a>

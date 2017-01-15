@@ -76,7 +76,7 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="{{ URL::to('home') }}" class="site_title"><i class="fa fa-university"></i> <span>Talenta Sejahtera</span></a>
+                        <a href="{{ URL::to('home') }}" class="site_title"><i class="fa fa-bank"></i> <span>Talenta Sejahtera</span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -113,10 +113,10 @@
                                 
                                 {{-- MODULE SUPER ADMIN --}}
                                 @if(Session::get('user_group') == 'super admin')
-                                <li><a><i class="fa fa-clone"></i>Administrator <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-cogs "></i>Administrator <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ URL::to('upload') }}"><i class="fa fa-clone"></i>Upload</a></li>
-                                        <li><a href="{{ URL::to('user') }}"><i class="fa fa-clone"></i>User </a></li>
+                                        <li><a href="{{ URL::to('upload') }}"><i class="fa fa-upload"></i>Upload</a></li>
+                                        <li><a href="{{ URL::to('user') }}"><i class="fa fa-user"></i>User </a></li>
                                         {{-- <li><a href="{{ URL::to('pasien') }}">Pasien</a></li> --}}
                                         {{-- <li><a href="{{ URL::to('obat') }}">Data Obat</a></li> --}}
                                         {{-- <li><a> <span class="fa fa-chevron-down"></span>Laporan</a> --}}
@@ -133,26 +133,26 @@
 
                                 {{-- MODULE ANGGOTA --}}
                                 <li>
-                                    <a href="{{ URL::to('anggota') }}"><i class="fa fa-clone"></i>Anggota </a>
+                                    <a href="{{ URL::to('anggota') }}"><i class="fa fa-users"></i>Anggota </a>
                                 </li>
                                 {{-- /MODULE ANGGOTA --}}
 
                                 {{-- MODULE SETORAN --}}
                                 <li>
-                                    <a href="{{ URL::to('setoran') }}"><i class="fa fa-clone"></i>Setoran </span></a>
+                                    <a href="{{ URL::to('setoran') }}"><i class="fa fa-sign-in"></i>Setoran </span></a>
                                 </li>
                                 {{-- /MODULE SETORAN --}}
 
                                 {{-- MODULE SETORAN --}}
                                 <li>
-                                    <a href="{{ URL::to('pengeluaran') }}"><i class="fa fa-clone"></i>Pengeluaran </span></a>
+                                    <a href="{{ URL::to('pengeluaran') }}"><i class="fa fa-sign-out"></i>Pengeluaran </span></a>
                                 </li>
                                 {{-- /MODULE SETORAN --}}
 
                                 {{-- MODULE LAPORAN --}}
-                                <li><a><i class="fa fa-clone"></i>Laporan <span class="fa fa-chevron-down"></span></a>
+                                <li><a><i class="fa fa-line-chart"></i>Laporan <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ URL::to('jurnal') }}">Jurnal</a></li>
+                                        <li><a href="{{ URL::to('jurnal') }}"><i class="fa fa-book"></i>Jurnal</a></li>
                                         {{-- <li><a href="{{ URL::to('pasien') }}">Pasien</a></li> --}}
                                         {{-- <li><a href="{{ URL::to('obat') }}">Data Obat</a></li> --}}
                                         {{-- <li><a> <span class="fa fa-chevron-down"></span>Laporan</a> --}}

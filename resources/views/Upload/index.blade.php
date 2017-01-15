@@ -8,20 +8,7 @@
 
           {{-- HEADER --}}
             <div class="page-title">
-              <div class="title_left">
-                <h3>Unggah Data<small></small></h3>
-              </div>
 
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  {{-- <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                  </div> --}}
-                </div>
-              </div>
             </div>
             {{-- /HEADER --}}
             
@@ -32,9 +19,9 @@
               {{-- <div class="col-md-12"> --}}
                 <div class="x_panel">
                   <div class="x_title">
-                    {{-- <h2>Title 2<small>example</small></h2> --}}
+                    <h2>Upload<small>module upload ke database</small></h2>
                     <div class="pull-right">
-                      {{-- <a href="{{ URL::to('tambah_kegiatan') }}" class="tips btn btn-xs btn-info" title="Tambah Siswa"><i class="fa fa-plus"></i> Tambah</a> --}}
+
 
 
                     </div>
@@ -46,10 +33,9 @@
                       <div class="form-group">
                         <div class=" col-xs-12">
                         {{-- content --}}
-                        
                         <form action="{{ route('data.upload') }}" method="post" enctype="multipart/form-data"> 
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <table class="table table-striped">
+                            <table class="table" style="width: 100%">
                                 
                                 <tr>
                                     <td width="300px">Nama Tabel</td>
@@ -79,13 +65,15 @@
                                 
                             </table>
                         </form>
-                    
+                        
+                        <div class="row"></div>
+
                         {{-- /content --}}
                         </div>
                       </div>
                     </div>
                     <div class="footer pull-right">
-                      {{-- {{ $rows->links() }} --}}
+
                     </div>
                   </div>
                 </div>
@@ -94,6 +82,22 @@
           </div>
           {{-- /BODY --}}
 
+
+
+          <div class="modal fade" id="edit-modals" tabindex="-1" role="dialog">
+            <div class="modal-dialog" style="width: 80%">
+              <div class="modal-content">
+                <div class="modal-header bg-default">
+
+                  <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="editmodals-title">Modal title</h4>
+                </div>
+                <div class="modal-body" id="edit-modals-content">
+
+                </div>
+  
+            </div>
+          </div>
 
 
 <script type="text/javascript">

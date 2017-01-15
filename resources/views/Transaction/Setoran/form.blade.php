@@ -9,7 +9,7 @@
 
           <div class="x_content">
             <br />
-            <form id="FormSetoram" data-parsley-validate class="form-horizontal form-label-left" action="{{ route('save.setoran') }}" method="POST">
+            <form id="FormSetoran" data-parsley-validate class="form-horizontal form-label-left" action="{{ route('save.setoran') }}" method="POST">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
             <input type="hidden" name="IdTransaksi" value="NULL">
 
@@ -232,7 +232,7 @@ $(document).ready(function() {
     hitung(dInput);
   });
 
-  $( "#FormSetoram" ).submit(function( event ) {
+  $( "#FormSetoran" ).submit(function( event ) {
     
     var value1 = $('#JumlahNilaiD').val();
     var value2 = $('#JumlahNilaiK').val();
