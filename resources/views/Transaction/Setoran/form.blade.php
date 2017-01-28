@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title',$module.' - '.$title)
+
 @section('content')
 
 
@@ -8,6 +10,17 @@
         <div class="x_panel">
 
           <div class="x_content">
+
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            
             <br />
             <form id="FormSetoran" data-parsley-validate class="form-horizontal form-label-left" action="{{ route('save.setoran') }}" method="POST">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
@@ -17,7 +30,6 @@
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">No Anggota<span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  {{-- <input type="text"  name="NoAnggota" class="form-control col-md-7 col-xs-12" > --}}
                   <select name="NoAnggota" class="form-control col-md-7 col-xs-12 form-select" style="width: 100%" onchange="getDataAnggota(this.value)">
                       <option></option>
                     @foreach($DataAnggota as $anggota)
@@ -141,14 +153,17 @@
                       <td><input type="text" name="Detail[8][NilaiD]" class="form-control col-md-7 col-xs-12 text-right kalkulasi" readonly="true"></td>
                       <td><input id="nilaiK8" type="text" name="Detail[8][NilaiK]" class="form-control col-md-7 col-xs-12 text-right kalkulasi"></td>
                     </tr>
+                    
+                  </tbody>
+                  <tfoot>
                     <tr>
                       <td colspan="2" class="text-right">Jumlah</td>
                       <td>
-                        <input id="JumlahNilaiD" type="text" name="Detail[9][JumlahNilaiD]" class="form-control col-md-7 col-xs-12 text-right kalkulasi" readonly="true"></td>
+                        <input id="JumlahNilaiD" type="text" name="JumlahNilaiD" class="form-control col-md-7 col-xs-12 text-right kalkulasi" readonly="true"></td>
                       <td>
-                        <input id="JumlahNilaiK" type="text" name="Detail[9][JumlahNilaiK]" class="form-control col-md-7 col-xs-12 text-right kalkulasi" readonly="true"></td>
+                        <input id="JumlahNilaiK" type="text" name="JumlahNilaiK" class="form-control col-md-7 col-xs-12 text-right kalkulasi" readonly="true"></td>
                     </tr>
-                  </tbody>
+                  </tfoot>
                 </table>
 
               </div>
@@ -179,7 +194,6 @@ function getDataAnggota(NoAnggota){
         type: 'GET',
         dataType: 'json',
         success: function(json) {
-            // console.log(json.no_anggota);
             $('#NoAnggota').val(json.no_anggota);
         }
     });
@@ -224,7 +238,7 @@ $(document).ready(function() {
   });
 
   $('.kalkulasi').bind('change keydown keyup',function (){
-    // var dInput = this.value;
+
     var dInput = $('#kasDebet').val();
    
     $('#JumlahKasDebet').val(dInput);

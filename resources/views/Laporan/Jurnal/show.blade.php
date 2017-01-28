@@ -14,12 +14,6 @@
 
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  {{-- <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                  </div> --}}
                 </div>
               </div>
             </div>
@@ -30,10 +24,9 @@
             {{-- BODY --}}
             <div class="row">
                 <div class="x_panel">
-                  <div class="x_title">
-                    {{-- <h3><small>Pencarian</small></h3> --}}
+                  <div class="collapse-link">
                     <ul class="nav navbar-right">
-                      <li><a class="collapse-link" ><small id="small_text">Buka</small>&nbsp;<i class="fa fa-chevron-down" onclick="ubah()"></i></a>
+                      <li><a class="" ><small id="small_text">Buka</small>&nbsp;<i class="fa fa-chevron-down" onclick="ubah()"></i></a>
                       </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -78,7 +71,7 @@
                             <div class="col-md-4 text-right">
                             </div>
                             <div class="col-md-4">
-                              <button type="submit" class="btn btn-success">Tampilkan Data</button>
+                              <button type="submit" class="btn btn-sm btn-success">Tampilkan Data</button>
                   
                             </div>
                             <div class="col-md-4">
@@ -154,7 +147,7 @@
                                       <td></td>
                                       <td></td>
                                       <td></td>
-                                      <td></td>
+                                      <td class="text-left">{{ $detail->nama_akun }}</td>
                                       <td class="text-right">{{ $detail->no_akun }}</td>
                                       <td class="text-right">{{ number_format($detail->nilai_d) }}</td>
                                       <td class="text-right">{{ number_format($detail->nilai_k) }}</td>

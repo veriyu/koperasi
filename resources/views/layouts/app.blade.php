@@ -60,6 +60,10 @@
     <link href="{{ asset('assets/sweetalert/css/sweetalert.css') }}" rel="stylesheet">
     {{-- sweet alert --}}
 
+    <!-- PNotify -->
+    <link href="{{ asset('assets/vendors_gentelella/pnotify/dist/pnotify.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendors_gentelella/pnotify/dist/pnotify.buttons.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendors_gentelella/pnotify/dist/pnotify.nonblock.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
 
@@ -283,6 +287,11 @@
 
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('assets/build/js/custom.min.js') }}"></script>
+
+     <!-- PNotify -->
+    <script src="{{ asset('assets/vendors_gentelella/pnotify/dist/pnotify.js') }}"></script>
+    <script src="{{ asset('assets/vendors_gentelella/pnotify/dist/pnotify.buttons.js') }}"></script>
+    <script src="{{ asset('assets/vendors_gentelella/pnotify/dist/pnotify.nonblock.js') }}"></script>
 </body>
 <!-- footer content -->
 <footer>

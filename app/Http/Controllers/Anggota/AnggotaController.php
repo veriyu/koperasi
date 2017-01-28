@@ -63,19 +63,30 @@ class AnggotaController extends Controller
 
     public function create(Request $request){
 
-        return view('Anggota.form');
+        $this->data['title']    = 'Anggota';
+        $this->data['module']   = 'Koperasi';
+
+        return view('Anggota.form',$this->data);
     }
 
     public function showdata($id){
 
+        $this->data['title']    = 'Anggota';
+        $this->data['module']   = 'Koperasi';
+
         $id = Encrypter::encryptID($id,true);
         
         $this->data['DataAnggota'] = AnggotaModel::getRow($id);
-        // dd($this->data['DataAnggota'] );
+        
         return view('Anggota.form_update',$this->data);
     }
 
     public function save(Request $request){
+
+        $this->validate($request, [
+            'NoAnggota'         => 'required',
+            'NamaAnggota'       => 'required',
+        ]);
 
         $data = $request->all();
         
@@ -96,6 +107,34 @@ class AnggotaController extends Controller
         AnggotaModel::getDelete($request->input('id'));
 
         return redirect('anggota');
+    }
+
+    public function search(Request $request){
+
+        $this->data['title']    = 'Anggota';
+        $this->data['module']   = 'Koperasi';
+
+        $data = $request->all();
+        
+        $params = array(
+            'NoAnggota'     => $data['NoAnggota'],
+            'NamaAnggota'   => $data['NamaAnggota'],
+            'perPage'       => static::$perpage,
+        );
+
+        $this->data['rows']     = AnggotaModel::searchAnggota($params);
+
+        // numbering
+        $currentPage     = LengthAwarePaginator::resolveCurrentPage();
+        
+        if($currentPage == 1){
+            $this->data['no']   = 1;
+        }else{
+            $this->data['no']   = (($currentPage - 1) * static::$perpage ) + 1;
+        }
+        // /numbering
+
+        return view('Anggota.index',$this->data);
     }
 
 }

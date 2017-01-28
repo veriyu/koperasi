@@ -62,6 +62,9 @@ class SetoranController extends Controller
 
     public function create(Request $request){
 
+        $this->data['title']    = 'Setoran';
+        $this->data['module']   = 'Koperasi';
+
         $this->data['DataAnggota'] = SetoranModel::getAnggota();
 
         return view('Transaction.Setoran.form',$this->data);
@@ -69,20 +72,30 @@ class SetoranController extends Controller
 
     public function showdata($id){
 
-        $id = Encrypter::encryptID($id,true);
+        $this->data['title']    = 'Setoran';
+        $this->data['module']   = 'Koperasi';
 
+        $id = Encrypter::encryptID($id,true);
+        
         $this->data['DataAnggota']          = SetoranModel::getAnggota();
         $this->data['DataSetoran']          = SetoranModel::getRow($id);
+
         $this->data['DataSetoranDetail']    = SetoranModel::getRowDetail($id);
-        // dd($this->data['DataSetoranDetail']);
 
         return view('Transaction.Setoran.form_update',$this->data);
     }
 
     public function save(Request $request){
+        
+        $this->validate($request, [
+            'NoAnggota'         => 'required',
+            'TanggalSetoran'    => 'required',
+            'NoSum'             => 'required',
+            'Keterangan'        => 'required',
+        ]);
 
         $data = $request->all();
-        // dd($data);
+        
         if($data['IdTransaksi'] == 'NULL'){
             
             SetoranModel::getInsert($data);

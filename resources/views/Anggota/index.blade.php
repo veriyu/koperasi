@@ -3,10 +3,10 @@
 @section('title',$module.' - '.$title)
 
 @section('content')
-
+  
           <div class="">
 
-          {{-- HEADER --}}
+            {{-- HEADER --}}
             <div class="page-title">
 
             </div>
@@ -16,7 +16,21 @@
 
             {{-- BODY --}}
             <div class="row">
-              {{-- <div class="col-md-12"> --}}
+              
+                <div class="x_panel">
+                  
+                  <div class="x_content">
+                    <form method="GET" action="{{ route('search.anggota') }}">
+                      <div class="form-group">
+                        <input type="text" name="NoAnggota" placeholder="No Anggota" style="width: 20%">
+                        <input type="text" name="NamaAnggota" placeholder="Nama Anggota" style="width: 50%">
+                        {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
+                        <button type="submit" class="tips btn btn-xs btn-primary"><i class="fa fa-search"></i> Cari</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Anggota<small>keanggotaan koperasi</small></h2>
@@ -38,7 +52,7 @@
                         <table class="table" style="width: 100%">
                           <thead>
                             <th width="20px">No</th>
-                            <th width="120px">No Anggota</th>
+                            <th width="100px">No Anggota</th>
                             <th width="">Nama Anggota</th>
                             <th>No Telpon</th>
                             <th>Alamat</th>
@@ -47,8 +61,8 @@
                           <tbody>
                               @foreach($rows as $row)
                               <tr>
-                                  <td>{{ $no++ }}</td>
-                                  <td>{{ $row->no_anggota }}</td>
+                                  <td class="text-right">{{ $no++ }}</td>
+                                  <td class="text-right">{{ $row->no_anggota }}</td>
                                   <td>{{ $row->nama_anggota }}</td>
                                   <td>{{ $row->no_telpon }}</td>
                                   <td>{{ $row->alamat }}</td>

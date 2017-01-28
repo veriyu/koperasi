@@ -43,6 +43,7 @@ MODULE Anggota
 	Route::get('anggota', 'Anggota\AnggotaController@index')->name('index.anggota');
 	Route::get('update/anggota/{id?}', 'Anggota\AnggotaController@showdata')->name('update.anggota');
 	Route::get('tambah/anggota','Anggota\AnggotaController@create')->name('create.anggota');
+	Route::get('cari/anggota','Anggota\AnggotaController@search')->name('search.anggota');
 	// route untuk ajax get
 	Route::get('deleteAnggota/{id?}', 'Anggota\AnggotaController@delete');
 	Route::post('simpan/anggota','Anggota\AnggotaController@save')->name('save.anggota');

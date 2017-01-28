@@ -20,6 +20,27 @@ class AnggotaModel extends Model
 		return $result;
 	}
 
+	public static function searchAnggota($params){
+		
+		if(!empty($params['NoAnggota'])){
+			$queryWhereNoAnggota = "AND no_anggota = '{$params['NoAnggota']}'";
+		}else{
+			$queryWhereNoAnggota = NULL;
+		}
+
+		if(!empty($params['NamaAnggota'])){
+			$queryWhereNamaAnggota = "AND nama_anggota LIKE '%{$params['NamaAnggota']}%' ";
+		}else{
+			$queryWhereNamaAnggota = NULL;
+		}
+
+		$query = "SELECT * FROM anggota WHERE no_anggota IS NOT NULL {$queryWhereNoAnggota}{$queryWhereNamaAnggota} ORDER BY no_anggota ASC";
+		
+		$results = DB::select($query);
+
+		return $results;
+	}
+
 	public static function getInsert($data){
 
 		DB::table('anggota')->insert([

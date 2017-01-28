@@ -13,7 +13,7 @@ class SetoranModel extends Model
 		
 		$results = DB::table('transaksi')
 					->where('tipe_transaksi','MASUK')
-					->join('anggota','anggota.id_anggota','transaksi.id_anggota')
+					->join('anggota','anggota.no_anggota','transaksi.id_anggota')
 					->paginate($param);
 
 		return $results;
@@ -26,7 +26,9 @@ class SetoranModel extends Model
 	}
 
 	public static function getRowDetail($id){
-		$results = DB::table('transaksi_detail')->where('id_transaksi',$id)->get();
+		$results = DB::table('transaksi_detail')
+					->join('akun','akun.no_akun','=','transaksi_detail.no_akun')
+					->where('id_transaksi',$id)->get();
 
 		return $results;
 	}
@@ -39,6 +41,7 @@ class SetoranModel extends Model
   			'tipe_transaksi'	=> 'MASUK',
   			'no_sum'			=> $data['NoSum'],
   			'no_ba'				=> $data['NoBa'],
+  			'jumlah'			=> $data['Jumlah'],
   			'keterangan'		=> $data['Keterangan'],
   			'created_at'		=> date('Y-m-d H:i:s'),
   			'created_by'		=> Session::get('user_name')
@@ -56,6 +59,7 @@ class SetoranModel extends Model
   			'keterangan'		=> $data['Keterangan'],
   			'no_sum'			=> $data['NoSum'],
   			'no_ba'				=> $data['NoBa'],
+  			'jumlah'			=> $data['Jumlah'],
   			'updated_at'		=> date('Y-m-d H:i:s'),
   			'updated_by'		=> Session::get('user_name')
 			]);
@@ -68,16 +72,14 @@ class SetoranModel extends Model
 		DB::table('transaksi_detail')->where('id_transaksi',$id_transaksi)->delete();
 
 		foreach ($DataDetail as $detail) {
-			// dd($detail['NoAkun']);
-			// if(!empty($detail['NilaiK']) || $detail['NoAkun'] == 100 ){
-
+			
 				DB::table('transaksi_detail')->insert([
 					'id_transaksi'	=> $id_transaksi,
 					'no_akun'		=> $detail['NoAkun'],
 					'nilai_d'		=> (empty($detail['NilaiD'])? Null : $detail['NilaiD']),
 					'nilai_k'		=> (empty($detail['NilaiK'])? Null : $detail['NilaiK']),
 					]);
-			// }
+			
 		}
 		
 	}

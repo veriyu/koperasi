@@ -21,9 +21,7 @@
                   <div class="x_title">
                     <h2>Setoran<small>dana masuk koperasi</small></h2>
                     <div class="pull-right">
-                      {{-- <a href="{{ URL::to('tambahModule') }}" class="tips btn btn-xs btn-info" title="Tambah Siswa"><i class="fa fa-plus"></i> Tambah</a> --}}
                       <a href="{{ route('create.setoran') }}" class="tips btn btn-xs btn-info" title="Tambah Siswa"><i class="fa fa-plus"></i> Tambah</a>
-
 
                     </div>
                     <div class="clearfix"></div>
@@ -121,16 +119,23 @@ function validation(val){
 
     function(isConfirm){   
       if (isConfirm) {     
-        setTimeout(function(){
-            $.ajax({
+        // setTimeout(function(){
+        //     $.ajax({
+        //       url: "{{ URL::to('deleteSetoran/?id=') }}"+val,
+        //       method: 'GET',
+        //     });
+        // swal("Dihapus!", "Data berhasil dihapus.", "success");   
+        // location.reload();
+        // },1500);
+
+        $.ajax({
               url: "{{ URL::to('deleteSetoran/?id=') }}"+val,
               method: 'GET',
+              success: function(){
+                swal("Dihapus!", "Data berhasil dihapus.", "success");  
+                location.reload();
+              }
             });
-        swal("Dihapus!", "Data berhasil dihapus.", "success");   
-        location.reload();
-        },1500);
-
-        
       } 
     }
   );

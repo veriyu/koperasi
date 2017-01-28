@@ -1,6 +1,6 @@
 ## Synopsis
 
-Module aplikasi Koperasi Simpan Pinjam dengan Laravel 5.3 sebgai engine utama dan template Gentelella 
+Module aplikasi Koperasi Simpan Pinjam dengan Laravel 5.3 sebagai engine utama dan template Gentelella 
 
 ## Installation
 

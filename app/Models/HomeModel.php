@@ -15,7 +15,7 @@ class HomeModel extends Model
 	}
 
 	public static function getLastSetoran(){
-		$result = DB::table('transaksi')->select('nama_anggota','tanggal','keterangan')->join('anggota','transaksi.id_anggota','anggota.id_anggota')->where('tipe_transaksi','MASUK')->orderby('transaksi.created_at','desc')->first();
+		$result = DB::table('transaksi')->select('nama_anggota','tanggal','keterangan')->join('anggota','transaksi.id_anggota','anggota.no_anggota')->where('tipe_transaksi','MASUK')->orderby('transaksi.created_at','desc')->first();
 
 		return $result;
 	}
@@ -28,7 +28,7 @@ class HomeModel extends Model
 	}
 
 	public static function getLastPengeluaran(){
-		$result = DB::table('transaksi')->select('nama_anggota','tanggal','keterangan')->join('anggota','transaksi.id_anggota','anggota.id_anggota')->where('tipe_transaksi','KELUAR')->orderby('transaksi.created_at','desc')->first();
+		$result = DB::table('transaksi')->select('nama_anggota','tanggal','keterangan')->join('anggota','transaksi.id_anggota','anggota.no_anggota')->where('tipe_transaksi','KELUAR')->orderby('transaksi.created_at','desc')->first();
 
 		return $result;
 	}

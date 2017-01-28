@@ -76,15 +76,15 @@ class JurnalController extends Controller
 
         $this->data['awal']     = $request->input('TanggalAwal');
         $this->data['akhir']    = $request->input('TanggalAkhir');
-        // dd($request->all());
+        
         $ReportHeader = JurnalModel::getHeaderLaporan($request->input('TanggalAwal'),$request->input('TanggalAkhir'));
         
         $DataLaporan = array();
         
         foreach ($ReportHeader as $key => $value) {
-            // dd($value);
+            
             $Detail = JurnalModel::getDetailLaporan($value->id_transaksi);
-            // dd($Detail);
+            
             $DataLaporan[] = array(
                 'Tanggal'       => $value->tanggal,
                 'Nama'          => $value->nama_anggota,
@@ -93,9 +93,9 @@ class JurnalController extends Controller
             );
         }
 
-        // dd($DataLaporan);
+        
         $this->data['DataLaporan'] = $DataLaporan;  
-        // dd($this->data['DataLaporan'][0]['Detail']);
+
         return view('Laporan.Jurnal.show',$this->data);
     }
 

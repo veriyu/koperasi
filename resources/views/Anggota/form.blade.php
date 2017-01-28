@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title',$module.' - '.$title)
+
 @section('content')
 
 
@@ -8,6 +10,7 @@
         <div class="x_panel">
 
           <div class="x_content">
+            
             <br />
             <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{ route('save.anggota') }}" method="POST">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
@@ -19,6 +22,9 @@
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <input type="text"  name="NoAnggota" class="form-control col-md-7 col-xs-12" >
                 </div>
+                @if (count($errors) > 0)
+                  <label class="label label-danger">{{ $errors->first('NoAnggota') }}</label>
+                @endif
               </div>
 
               <div class="form-group">
@@ -27,6 +33,9 @@
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <input type="text"  name="NamaAnggota" class="form-control col-md-7 col-xs-12" >
                 </div>
+                @if (count($errors) > 0)
+                  <label class="label label-danger">{{ $errors->first('NamaAnggota') }}</label>
+                @endif
               </div>
               
                <div class="form-group">
