@@ -32,4 +32,22 @@ class HomeModel extends Model
 
 		return $result;
 	}
+
+	public static function getTotalAnggota(){
+		$result = DB::table('anggota')->count('id_anggota');
+		
+		return $result;
+	}
+
+	public static function getAnggotaAktif(){
+		$result = DB::table('anggota')->where('status',1)->count();
+
+		return $result;
+	}
+
+	public static function getAnggotaNonAktif(){
+		$result = DB::table('anggota')->where('status',0)->count();
+
+		return $result;
+	}
 }

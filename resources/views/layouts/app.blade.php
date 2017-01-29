@@ -157,6 +157,7 @@
                                 <li><a><i class="fa fa-line-chart"></i>Laporan <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="{{ URL::to('jurnal') }}"><i class="fa fa-book"></i>Jurnal</a></li>
+                                        <li><a href="{{ URL::to('bukubesar') }}"><i class="fa fa-book"></i>Buku Besar</a></li>
                                         {{-- <li><a href="{{ URL::to('pasien') }}">Pasien</a></li> --}}
                                         {{-- <li><a href="{{ URL::to('obat') }}">Data Obat</a></li> --}}
                                         {{-- <li><a> <span class="fa fa-chevron-down"></span>Laporan</a> --}}

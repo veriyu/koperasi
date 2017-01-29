@@ -70,7 +70,7 @@ MODULE Anggota
 	Route::post('simpan/pengeluaran','Transaction\PengeluaranController@save')->name('save.pengeluaran');
 // MODULE Pengeluaran
 
-// MODULE Laporan
+// MODULE Laporan Jurnal
 	Route::get('jurnal', 'Laporan\JurnalController@index')->name('index.jurnal');
 	// Route::get('update/jurnal/{id?}', 'Laporan\JurnalController@showdata')->name('update.jurnal');
 	Route::get('laporan/jurnal', 'Laporan\JurnalController@showdata')->name('show.jurnal');
@@ -78,7 +78,12 @@ MODULE Anggota
 	// route untuk ajax get
 	Route::get('deletejurnal/{id?}', 'Laporan\JurnalController@delete');
 	Route::post('simpan/jurnal','Laporan\JurnalController@save')->name('save.jurnal');
-// MODULE Laporan
+// MODULE Laporan Jurnal
+
+// MODULE Laporan Buku Besar
+	Route::get('bukubesar', 'Laporan\BukubesarController@index')->name('index.bukubesar');
+	Route::get('laporan/bukubesar', 'Laporan\BukubesarController@showdata')->name('show.bukubesar');
+// MODULE Laporan Buku Besar
 
 // MODULE USER
 	Route::get('user', 'UserController@index')->name('index.user');
