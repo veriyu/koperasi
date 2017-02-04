@@ -30,12 +30,28 @@
               </div>
 
               <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Anggota Penjamin<span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <select name="NoAnggotaPenjamin" class="form-control col-md-7 col-xs-12 form-select" style="width: 100%" >
+                      <option></option>
+                    @foreach($Anggota as $anggota)
+                      <option value="{{ $anggota->no_anggota }}" @if($anggota->no_anggota == $DataAnggota->no_anggota_penjamin) selected="true" @endif>{{ $anggota->nama_anggota }}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Status Keanggotaan<span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <div id="Status" class="btn-group" data-toggle="buttons">
                     <label class="btn btn-default" data-toggle-class="btn-default" data-toggle-passive-class="btn-default" id="StatusAktif">
-                      <input type="radio" name="Status" value="1" id="radioVal1" data-parsley-multiple="Status" @if($DataAnggota->status == 1) checked="true"@endif> &nbsp; Aktif &nbsp;
+                      <input type="radio" name="Status" value="1" id="radioVal1" data-parsley-multiple="Status" @if($DataAnggota->status == 1) checked="true"@endif> Aktif
+                    </label>
+                    <label class="btn btn-default" data-toggle-class="btn-default" data-toggle-passive-class="btn-default" id="StatusPasif">
+                      <input type="radio" name="Status" value="2" id="radioVal3" data-parsley-multiple="Status" @if($DataAnggota->status == 2) checked="true" @endif> Pasif
                     </label>
                     <label class="btn btn-default" data-toggle-class="btn-default" data-toggle-passive-class="btn-default" id="StatusNonAktif">
                       <input type="radio" name="Status" value="0" id="radioVal2" data-parsley-multiple="Status" @if($DataAnggota->status == 0) checked="true" @endif> Non-Aktif
@@ -80,8 +96,6 @@
 <script type="text/javascript">
   
 $('.form-select').select2({
-  placeholder: "Pilih Obat",
-  allowClear: true
 });
     
 $('#sel').select2({
@@ -111,17 +125,28 @@ $('#sel').select2({
 
 function checkStat(){
   
-  var Stat1 = $('#radioVal1').val();
-  var Stat2 = $('#radioVal2').val();
-  console.log(Stat1);
-  console.log(Stat2);
-  if(Stat1 == 1){
+  var Stat1 = $('#radioVal1').prop( "checked" );;
+  var Stat2 = $('#radioVal2').prop( "checked" );;
+  var Stat3 = $('#radioVal3').prop( "checked" );;
+
+  if(Stat1 == true){
 
     $('#StatusNonAktif').removeClass('active');
+    $('#StatusPasif').removeClass('active');
     $('#StatusAktif').addClass('active');
-  }else{
+
+  }else if(Stat2 == true){
+
     $('#StatusAktif').removeClass('active');
+    $('#StatusPasif').removeClass('active');
     $('#StatusNonAktif').addClass('active');
+
+  }else if(Stat3 == true){
+
+    $('#StatusAktif').removeClass('active');
+    $('#StatusNonAktif').removeClass('active');
+    $('#StatusPasif').addClass('active');
+
   }
 }
 
@@ -130,6 +155,7 @@ $(document).ready(function() {
     dateFormat: "yy-mm-dd",
   });
   
+  // checking status keanggotaan
   checkStat();
   
 });

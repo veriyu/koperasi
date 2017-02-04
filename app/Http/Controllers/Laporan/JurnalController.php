@@ -71,7 +71,7 @@ class JurnalController extends Controller
 
     public function showdata(Request $request){
 
-        $this->data['title']    = 'Setoran';
+        $this->data['title']    = 'Laporan Jurnal';
         $this->data['module']   = 'Koperasi';
 
         $this->data['awal']     = $request->input('TanggalAwal');
@@ -87,14 +87,19 @@ class JurnalController extends Controller
             
             $DataLaporan[] = array(
                 'Tanggal'       => $value->tanggal,
+                'SUM'           => $value->no_sum,
                 'Nama'          => $value->nama_anggota,
                 'Keterangan'    => $value->keterangan,
                 'Detail'        => $Detail,
             );
         }
 
-        
-        $this->data['DataLaporan'] = $DataLaporan;  
+        $awl = date("d-m-Y",strtotime($request->TanggalAwal));
+        $akhr = date("d-m-Y",strtotime($request->TanggalAkhir));
+
+        $this->data['JudulAwal']    = $awl;
+        $this->data['JudulAkhir']   = $akhr;
+        $this->data['DataLaporan']  = $DataLaporan;  
 
         return view('Laporan.Jurnal.show',$this->data);
     }

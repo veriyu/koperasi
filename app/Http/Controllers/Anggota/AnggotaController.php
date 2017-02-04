@@ -66,6 +66,8 @@ class AnggotaController extends Controller
         $this->data['title']    = 'Anggota';
         $this->data['module']   = 'Koperasi';
 
+        $this->data['DataAnggota'] = AnggotaModel::getAnggota();
+
         return view('Anggota.form',$this->data);
     }
 
@@ -73,6 +75,8 @@ class AnggotaController extends Controller
 
         $this->data['title']    = 'Anggota';
         $this->data['module']   = 'Koperasi';
+
+        $this->data['Anggota'] = AnggotaModel::getAnggota();
 
         $id = Encrypter::encryptID($id,true);
         
@@ -89,7 +93,7 @@ class AnggotaController extends Controller
         ]);
 
         $data = $request->all();
-        
+        // dd($data);
         if($data['IdAnggota'] == 'NULL'){
             
             AnggotaModel::getInsert($data);

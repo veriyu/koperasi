@@ -9,7 +9,7 @@
 
           <div class="x_content">
             <br />
-            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{ route('save.pengeluaran') }}" method="POST">
+            <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{ route('save.pinjaman') }}" method="POST">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
             <input type="hidden" name="IdPengeluaran" value="NULL">
             <input type="hidden" name="Tipe" value="pengeluaran">
@@ -147,7 +147,7 @@
                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 
                   <button type="submit" class="btn btn-success">Simpan</button>
-                  <a href="{{ route('index.setoran') }}" " class="btn btn-primary">Batal</a>
+                  <a href="{{ route('index.pinjaman') }}" " class="btn btn-primary">Batal</a>
 
                 </div>
               </div>

@@ -61,6 +61,14 @@
         <div class="icon"><i class="fa fa-users"></i></div>
         <div class="count">{{ $AnggotaNonAktif }}</div>
         <br>
+        <h3>Anggota Pasif</h3>
+      </div>
+    </div>
+    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <div class="tile-stats">
+        <div class="icon"><i class="fa fa-users "></i></div>
+        <div class="count">{{ $AnggotaNonAktif }}</div>
+        <br>
         <h3>Anggota Non-Aktif</h3>
       </div>
     </div>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 use Session;
 
-class PengeluaranModel extends Model
+class PinjamanModel extends Model
 {
 	
 	

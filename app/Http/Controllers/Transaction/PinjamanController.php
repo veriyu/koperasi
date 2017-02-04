@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Transaction;
 
 // call a model
-use App\Models\Transaction\PengeluaranModel;
+use App\Models\Transaction\PinjamanModel;
 
 // Extend Controller
 use App\Http\Controllers\Controller;
@@ -17,7 +17,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use App\Helpers\Encrypter;
 use Session;
 
-class PengeluaranController extends Controller
+class PinjamanController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -29,7 +29,7 @@ class PengeluaranController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -40,12 +40,12 @@ class PengeluaranController extends Controller
     public function index()
     {
 
-        $this->data['title']    = 'Setoran';
+        $this->data['title']    = 'Pinjaman';
         $this->data['module']   = 'Koperasi';
         
         $param = static::$perpage;
 
-        $this->data['rows']     = PengeluaranModel::getRows($param);
+        $this->data['rows']     = PinjamanModel::getRows($param);
 
         // numbering
         $currentPage     = LengthAwarePaginator::resolveCurrentPage();
@@ -57,23 +57,23 @@ class PengeluaranController extends Controller
         }
         // /numbering
 
-        return view('Transaction.Pengeluaran.index',$this->data);
+        return view('Transaction.Pinjaman.index',$this->data);
     }
 
     public function create(Request $request){
 
-        $this->data['DataAnggota'] = PengeluaranModel::getAnggota();
+        $this->data['DataAnggota'] = PinjamanModel::getAnggota();
 
-        return view('Transaction.Pengeluaran.form',$this->data);
+        return view('Transaction.Pinjaman.form',$this->data);
     }
 
     public function showdata($id){
 
         $id = Encrypter::encryptID($id,true);
 
-        $this->data['DataAnggota']          = PengeluaranModel::getAnggota();
-        $this->data['DataSetoran']          = PengeluaranModel::getRow($id);
-        $this->data['DataSetoranDetail']    = PengeluaranModel::getRowDetail($id);
+        $this->data['DataAnggota']          = PinjamanModel::getAnggota();
+        $this->data['DataSetoran']          = PinjamanModel::getRow($id);
+        $this->data['DataSetoranDetail']    = PinjamanModel::getRowDetail($id);
         // dd($this->data['DataSetoranDetail']);
 
         return view('Transaction.Setoran.form_update',$this->data);
@@ -83,15 +83,15 @@ class PengeluaranController extends Controller
 
         $data = $request->all();
         
-        if($data['IdPengeluaran'] == 'NULL'){
+        if($data['IdPinjaman'] == 'NULL'){
             
-            PengeluaranModel::getInsert($data);
+            PinjamanModel::getInsert($data);
         }else{
             
-            PengeluaranModel::getUpdate($data);
+            PinjamanModel::getUpdate($data);
         }
 
-        return redirect('pengeluaran');
+        return redirect('pinjaman');
 
     }
 
@@ -99,7 +99,7 @@ class PengeluaranController extends Controller
 
         SetoranModel::getDelete($request->input('id'));
 
-        return redirect('pengeluaran');
+        return redirect('pinjaman');
     }
 
 }

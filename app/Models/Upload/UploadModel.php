@@ -9,7 +9,7 @@ class UploadModel extends Model
 
 	public static function tableName(){
 		$tables = DB::select('SHOW TABLES');
-			
+		
 		return $tables;
 
 	}

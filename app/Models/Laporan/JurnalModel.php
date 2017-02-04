@@ -12,7 +12,7 @@ class JurnalModel extends Model
 	public static function getHeaderLaporan($TanggalAwal,$TanggalAkhir){
 
 		$results = DB::table('transaksi')
-				->select('id_transaksi','tanggal','keterangan','anggota.nama_anggota')
+				->select('id_transaksi','tanggal','no_sum','keterangan','anggota.nama_anggota')
 				->join('anggota','transaksi.id_anggota','=','anggota.no_anggota')
 				->whereBetween('tanggal',[$TanggalAwal,$TanggalAkhir])
 				->orderby('tanggal')

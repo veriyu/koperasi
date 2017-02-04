@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Laporan;
 
 // call a model
 use App\Models\Laporan\BukubesarModel;
+use App\Models\Akun\AkunModel;
 
 // Extend Controller
 use App\Http\Controllers\Controller;
@@ -24,12 +25,12 @@ class BukubesarController extends Controller
      *
      * @return void
      */
-
     static $perpage         = 20;
 
     public function __construct()
     {
         $this->middleware('auth');
+
     }
 
     /**
@@ -42,21 +43,7 @@ class BukubesarController extends Controller
 
         $this->data['title']    = 'Buku Besar';
         $this->data['module']   = 'Koperasi';
-
-        // $this->data['Bulan']    = array(
-        //     'Januari'       => 'Januari',
-        //     'Februari'      => 'Februari',
-        //     'Maret'         => 'Maret',
-        //     'April'         => 'April',
-        //     'Mei'           => 'Mei',
-        //     'Juni'          => 'Juni',
-        //     'Juli'          => 'Juli',
-        //     'Agustus'       => 'Agustus',
-        //     'September'     => 'September',
-        //     'Oktober'       => 'Oktober',
-        //     'November'      => 'November',
-        //     'Desember'      => 'Desember',
-        //     );
+        
         $this->data['Bulan']    = array(
             '01'       => 'Januari',
             '02'       => 'Februari',
@@ -76,6 +63,10 @@ class BukubesarController extends Controller
             '2016'  => 2016,
             '2017'  => 2017,
             );
+
+        $AkunModel = new AkunModel();
+
+        $this->data['AkunList']   = $AkunModel->select('no_akun','nama_akun')->orderby('nama_akun','ASC')->get();
 
         return view('Laporan.Bukubesar.index',$this->data);
     }
@@ -108,23 +99,54 @@ class BukubesarController extends Controller
             '2016'  => 2016,
             '2017'  => 2017,
             );
+        
 
         $data =  $request->all();
         
-        $DataLaporanHeader = BukubesarModel::getLaporanHeader($data);
-        // dd($DataLaporanHeader);
+        $AkunModel = new AkunModel();
 
-        foreach($DataLaporanHeader as $header){
-            $detail = BukubesarModel::getLaporanDetail($header->id_transaksi);
+        if($request->NoAkun == null){
+            
+            $AkunList   = $AkunModel->select('no_akun','nama_akun')->get();
 
-            $DataLaporan[] = array(
-                'Tanggal'       => $header->tanggal,
-                'Keterangan'    => $header->keterangan,
-                'Detail'        => $detail,
-            );
+
+            foreach($AkunList as $akun){
+                
+                $DataDetail = BukubesarModel::getLaporanDetail($data,$akun->no_akun);
+                
+                $DataLaporan[] = array(
+                    'NamaAkun'          => $akun->nama_akun,
+                    'NoAkun'            => $akun->no_akun,
+                    'Detail'            => $DataDetail,
+                ); 
+            }
+
+            
+        }else{
+            $AkunList = $request->NoAkun;
+
+            foreach($AkunList as $akun){
+                
+                $DataAkun = $AkunModel->select('no_akun','nama_akun')->where('no_akun',$akun)->first();
+
+                $DataDetail = BukubesarModel::getLaporanDetail($data,$akun);
+                
+                $DataLaporan[] = array(
+                    'NamaAkun'          => $DataAkun->nama_akun,
+                    'NoAkun'            => $DataAkun->no_akun,
+                    'Detail'            => $DataDetail,
+                ); 
+            }
+
         }
+
+        $bln = ($request->Bulan == "Pilih Bulan" ? "" : $this->data['Bulan'][$request->Bulan]);
         
-        $this->data['DataLaporan'] = $DataLaporanHeader;  
+        $this->data['JudulBulan']    = $bln;
+        $this->data['JudulTahun']    = $request->Tahun;
+
+        $this->data['DataLaporan']  = $DataLaporan;
+        $this->data['AkunList']     = $AkunModel->select('no_akun','nama_akun')->orderby('nama_akun','ASC')->get();
 
         return view('Laporan.Bukubesar.show',$this->data);
     }

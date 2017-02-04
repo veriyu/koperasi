@@ -9,7 +9,7 @@
           {{-- HEADER --}}
             <div class="page-title">
               <div class="title_left">
-                <h3 class="">Laporan Jurnal <small></small></h3>
+                <h3 class="">Laporan Jurnal  <small>{{$JudulAwal}} s/d {{$JudulAkhir}}</small></h3>
               </div>
 
               <div class="title_right">
@@ -117,6 +117,7 @@
                             <thead>
                               <tr>
                                 <th>Tanggal</th>
+                                <th>No SUM</th>
                                 <th>Nama Anggota</th>
                                 <th>Keterangan</th>
                                 <th>Nama Akun</th>
@@ -133,7 +134,8 @@
                                 @endif
                                 @foreach($DataLaporan as $header)
                                   <tr>
-                                    <td>{{ $header['Tanggal'] }}</td>
+                                    <td>{{ date("d-m-Y",strtotime($header['Tanggal'])) }}</td>
+                                    <td class="text-right">{{ $header['SUM'] }}</td>
                                     <td>{{ $header['Nama'] }}</td>
                                     <td>{{ $header['Keterangan'] }}</td>
                                     <td></td>
@@ -144,6 +146,7 @@
                                   @foreach($header['Detail'] as $detail)
                                     @if($detail->nilai_d >0 | $detail->nilai_k >0)
                                     <tr>
+                                      <td></td>
                                       <td></td>
                                       <td></td>
                                       <td></td>

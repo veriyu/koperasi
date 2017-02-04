@@ -44,7 +44,7 @@
                                       <select name="Table" class="form-select"  style="width: 100%">
                                         <option value=""> ... </option>
                                         @foreach($tableName as $table)
-                                          @if($table->Tables_in_koperasi == 'anggota')
+                                          @if($table->Tables_in_koperasi == 'anggota' | $table->Tables_in_koperasi == 'akun')
                                           <option value="{{ $table->Tables_in_koperasi }}">{{ $table->Tables_in_koperasi }}</option>
                                           @endif
                                         @endforeach

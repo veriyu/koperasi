@@ -9,7 +9,7 @@
           {{-- HEADER --}}
             <div class="page-title">
               <div class="title_left">
-                <h3>Laporan Kegiatan <small></small></h3>
+                <h3>Laporan Saldo Akun<small></small></h3>
               </div>
 
               <div class="title_right">
@@ -47,28 +47,23 @@
                         <div class=" col-xs-12">
                         {{-- content --}}
 
-                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{ route('show.jurnal') }}" method="GET">
+                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="{{ route('show.saldoakun') }}" method="GET">
                           
                         <div class="form-group">
+                          
+                          <div class="row">
+
                           <div class="row">
                             <div class="col-md-4 text-right">
-                              <label class="control-label ">Tanggal Awal</label>
+                              <label class="control-label">Tahun</label>
                             </div>
                             <div class="col-md-4">
-                              <input type="text" name="TanggalAwal" class="form-control tanggal">
-                              <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
-                            </div>
-                            <div class="col-md-4">
-                            </div>
-                          </div>
-                          <div class="clearfix" style="min-height: 10px"></div>
-                          <div class="row">
-                            <div class="col-md-4 text-right">
-                              <label class="control-label">Tanggal Akhir</label>
-                            </div>
-                            <div class="col-md-4">
-                              <input type="text" name="TanggalAkhir" class="form-control tanggal">
-                              <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
+                              <select name="Tahun" class="form-select" style="width: 100%">
+                                <option>Pilih Tahun</option>
+                                @foreach($Tahun as $thn)
+                                  <option value="{{$thn}}">{{$thn}}</option>
+                                @endforeach
+                              </select>
                             </div>
                             <div class="col-md-4">
                             </div>
@@ -106,22 +101,6 @@
           {{-- /BODY --}}
 
 
-
-          <div class="modal fade" id="edit-modals" tabindex="-1" role="dialog">
-            <div class="modal-dialog" style="width: 80%">
-              <div class="modal-content">
-                <div class="modal-header bg-default">
-
-                  <button type="button " class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="editmodals-title">Modal title</h4>
-                </div>
-                <div class="modal-body" id="edit-modals-content">
-
-                </div>
-  
-            </div>
-          </div>
-
 <script>
 
 
@@ -134,6 +113,11 @@ $(document).ready(function() {
 $('.form-select').select2({
   // placeholder: "Pilih Tahun",
   allowClear: true
+});
+
+$('.form-select-tags').select2({
+  tags: true,
+  // allowClear: true
 });
 
 });

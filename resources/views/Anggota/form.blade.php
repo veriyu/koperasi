@@ -38,13 +38,29 @@
                 @endif
               </div>
               
-               <div class="form-group">
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Anggota Penjamin<span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <select name="NoAnggotaPenjamin" class="form-control col-md-7 col-xs-12 form-select" style="width: 100%" >
+                      <option></option>
+                    @foreach($DataAnggota as $anggota)
+                      <option value="{{ $anggota->no_anggota }}">{{ $anggota->nama_anggota }}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Status Keanggotaan<span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <div id="Status" class="btn-group" data-toggle="buttons">
                     <label class="btn btn-default" data-toggle-class="btn-default" data-toggle-passive-class="btn-default" id="StatusAktif">
                       <input type="radio" name="Status" value="1" id="radioVal1" data-parsley-multiple="Status" checked="true"> &nbsp; Aktif &nbsp;
+                    </label>
+                    <label class="btn btn-default" data-toggle-class="btn-default" data-toggle-passive-class="btn-default" id="StatusNonAktif">
+                      <input type="radio" name="Status" value="2" id="radioVal2" data-parsley-multiple="Status" checked="false" > Pasif
                     </label>
                     <label class="btn btn-default" data-toggle-class="btn-default" data-toggle-passive-class="btn-default" id="StatusNonAktif">
                       <input type="radio" name="Status" value="0" id="radioVal2" data-parsley-multiple="Status" checked="false" > Non-Aktif
@@ -89,7 +105,7 @@
 <script type="text/javascript">
   
 $('.form-select').select2({
-  placeholder: "Pilih Obat",
+  placeholder: "Pilih Anggota",
   allowClear: true
 });
     

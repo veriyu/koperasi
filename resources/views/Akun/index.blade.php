@@ -3,10 +3,10 @@
 @section('title',$module.' - '.$title)
 
 @section('content')
-
+  
           <div class="">
 
-          {{-- HEADER --}}
+            {{-- HEADER --}}
             <div class="page-title">
 
             </div>
@@ -16,13 +16,13 @@
 
             {{-- BODY --}}
             <div class="row">
-              {{-- <div class="col-md-12"> --}}
+
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Pengeluaran<small>pengeluaran dana koperasi</small></h2>
+                    <h2>Akun<small>data akun koperasi</small></h2>
                     <div class="pull-right">
                       {{-- <a href="{{ URL::to('tambahModule') }}" class="tips btn btn-xs btn-info" title="Tambah Siswa"><i class="fa fa-plus"></i> Tambah</a> --}}
-                      <a href="{{ route('create.pengeluaran') }}" class="tips btn btn-xs btn-info" title="Tambah Siswa"><i class="fa fa-plus"></i> Tambah</a>
+                      <a href="{{ route('create.akun') }}" class="tips btn btn-xs btn-info" title="Tambah Siswa"><i class="fa fa-plus"></i> Tambah</a>
 
 
                     </div>
@@ -38,25 +38,23 @@
                         <table class="table" style="width: 100%">
                           <thead>
                             <th width="20px">No</th>
-                            <th width="120px">No Anggota</th>
-                            <th width="">Nama Anggota</th>
-                            <th width="150px">Jumlah</th>
-                            <th>Keterangan</th>
+                            <th width="100px">No Akun</th>
+                            <th width="">Nama Akun</th>
+                            <th>Kategori Akun</th>
                             <th width="100px"></th>
                           </thead>
                           <tbody>
                               @foreach($rows as $row)
-                                <tr>
-                                    <td>{{ $no++ }}</td>
-                                    <td>{{ $row->no_anggota }}</td>
-                                    <td>{{ $row->nama_anggota }}</td>
-                                    <td class="tex-right">{{ number_format($row->jumlah) }}</td>
-                                    <td>{{ $row->keterangan }}</td>
-                                    <td>
-                                        <a href="{{ route('update.setoran',Encrypter::encryptID($row->id_transaksi) ) }}" class="tips btn btn-xs btn-info" title="Edit"><i class="fa fa-folder-open-o"></i></a>
-                                        <button value="{{ $row->id_transaksi }}" class="tips btn btn-xs btn-danger hapus-siswa" title="Hapus" onclick="validation(this.value)"><i class="fa fa-trash"></i></button>
-                                      </td>
-                                </tr>
+                              <tr>
+                                  <td class="text-right">{{ $no++ }}</td>
+                                  <td class="text-right">{{ $row->no_akun }}</td>
+                                  <td>{{ $row->nama_akun }}</td>
+                                  <td>{{ $row->kategori_akun }}</td>
+                                  <td>
+                                      <a href="{{ route('update.akun',Encrypter::encryptID($row->id_akun) ) }}" class="tips btn btn-xs btn-info" title="Edit"><i class="fa fa-folder-open-o"></i></a>
+                                      <button value="{{ $row->id_akun }}" class="tips btn btn-xs btn-danger hapus-siswa" title="Hapus" onclick="validation(this.value)"><i class="fa fa-trash"></i></button>
+                                    </td>
+                              </tr>
                               @endforeach
                           </tbody>
                         </table>
@@ -121,14 +119,17 @@ function validation(val){
 
     function(isConfirm){   
       if (isConfirm) {     
-        setTimeout(function(){
+        
             $.ajax({
-              url: "{{ URL::to('deleteSetoran/?id=') }}"+val,
+              url: "{{ URL::to('deleteAkun/?id=') }}"+val,
               method: 'GET',
+              success: function(e){
+                swal("Dihapus!", "Data berhasil dihapus.", "success");   
+                location.reload();
+                
+              }
             });
-        swal("Dihapus!", "Data berhasil dihapus.", "success");   
-        location.reload();
-        },1500);
+        
 
         
       } 

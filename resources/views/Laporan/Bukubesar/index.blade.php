@@ -56,7 +56,7 @@
                               <label class="control-label">Bulan</label>
                             </div>
                             <div class="col-md-4">
-                              <select name="Bulan" class="form-select" style="width: 100%">
+                              <select name="Bulan" class="form-select" style="width: 100%" placeholder="Pilih Bulan">
                                 <option>Pilih Bulan</option>
                                 @foreach($Bulan as $key => $value)
                                   <option value="{{$key}}">{{$value}}</option>
@@ -77,6 +77,23 @@
                                 <option>Pilih Tahun</option>
                                 @foreach($Tahun as $thn)
                                   <option value="{{$thn}}">{{$thn}}</option>
+                                @endforeach
+                              </select>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                          </div>
+                          <div class="clearfix" style="min-height: 10px"></div>
+
+                          <div class="row">
+                            <div class="col-md-4 text-right">
+                              <label class="control-label">Akun</label>
+                            </div>
+                            <div class="col-md-4">
+                              <select name="NoAkun[]" class="form-select-tags" multiple="true" style="width: 100%">
+                                <option>Pilih Akun</option>
+                                @foreach($AkunList as $akun)
+                                  <option value="{{$akun->no_akun}}">{{$akun->nama_akun}}</option>
                                 @endforeach
                               </select>
                             </div>
@@ -144,6 +161,11 @@ $(document).ready(function() {
 $('.form-select').select2({
   // placeholder: "Pilih Tahun",
   allowClear: true
+});
+
+$('.form-select-tags').select2({
+  tags: true,
+  // allowClear: true
 });
 
 });

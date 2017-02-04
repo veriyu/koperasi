@@ -44,11 +44,13 @@ class AnggotaModel extends Model
 	public static function getInsert($data){
 
 		DB::table('anggota')->insert([
-			'no_anggota'	=> $data['NoAnggota'],
-			'nama_anggota'	=> $data['NamaAnggota'],
-			'no_telpon'		=> $data['NoTelpon'],
-			'alamat'		=> $data['Alamat'],
-			'created_at'	=> date('Y-m-d'),
+			'no_anggota'			=> $data['NoAnggota'],
+			'no_anggota_penjamin' 	=> $data['NoAnggotaPenjamin'],
+			'nama_anggota'			=> $data['NamaAnggota'],
+			'no_telpon'				=> $data['NoTelpon'],
+			'alamat'				=> $data['Alamat'],
+			'status'				=> $data['Status'],
+			'created_at'			=> date('Y-m-d'),
 			// 'created_by'
 			]);
 
@@ -57,18 +59,25 @@ class AnggotaModel extends Model
 	public static function getUpdate($data){
 
 		DB::table('anggota')->where('id_anggota',$data['IdAnggota'])->update([
-			'no_anggota'	=> $data['NoAnggota'],
-			'nama_anggota'	=> $data['NamaAnggota'],
-			'no_telpon'		=> $data['NoTelpon'],
-			'alamat'		=> $data['Alamat'],
-			// 'created_at'
-			// 'created_by'
+			'no_anggota'			=> $data['NoAnggota'],
+			'no_anggota_penjamin' 	=> $data['NoAnggotaPenjamin'],
+			'nama_anggota'			=> $data['NamaAnggota'],
+			'no_telpon'				=> $data['NoTelpon'],
+			'alamat'				=> $data['Alamat'],
+			'status'				=> $data['Status'],
+			'updated_at'			=> date('Y-m-d'),
 			]);
 
 	}
 
 	public static function getDelete($id){
 		DB::table('anggota')->where('id_anggota',$id)->delete();
+	}
+
+	public static function getAnggota(){
+		$results = DB::table('anggota')->select('id_anggota','no_anggota','nama_anggota')->get();
+
+		return $results;
 	}
 
 }
